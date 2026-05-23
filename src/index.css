@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+html { font-size: 17px; }
+@media (min-width: 1280px) { html { font-size: 18px; } }
+@media (min-width: 1600px) { html { font-size: 19px; } }
+
+html, body {
+  background: theme('colors.background');
+  color: theme('colors.foreground');
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+::selection { background: theme('colors.gold'); color: theme('colors.primary'); }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Archivo', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-weight: 800;
+}
+
+/* Gold gradient text (used for accent words) */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #8b6914 0%, #c8932e 30%, #e6c478 50%, #c8932e 70%, #8b6914 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+}
+
+.text-gold-shine {
+  background: linear-gradient(90deg, #8b6914, #d4af37, #f0d896, #d4af37, #8b6914);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4.5s linear infinite;
+}
+@keyframes shine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Bone-paper grid (used on light sections) */
+.paper-grid-light {
+  background-image:
+    linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: -1px -1px;
+}
+/* Blueprint grid (dark sections) */
+.paper-grid-dark {
+  background-image:
+    linear-gradient(rgba(245,241,232,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,241,232,0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Stroke text (for hero hairline) */
+.text-stroke {
+  -webkit-text-stroke: 1.5px theme('colors.on-primary');
+  color: transparent;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .text-gold-shine { animation: none; background-position: 0 0; }
+}
