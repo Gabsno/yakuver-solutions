@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowRight, Phone, Mail } from 'lucide-react';
-import logo from '../assets/yakuver-logo.png';
+import mark from '../assets/yakuver-mark.png';
 import { springSnappy, springTap } from '../lib/motion-presets';
 import { useT } from '../lib/i18n';
 
@@ -73,24 +73,33 @@ export function Nav() {
 
       {/* MAIN NAV */}
       <div className="max-w-[1480px] mx-auto px-6 lg:px-10 py-3 lg:py-4 flex items-center justify-between gap-6">
-        <a href="#" className="flex items-center gap-3 group shrink-0 relative" aria-label="Yakuver Solutions home">
-          {/* Soft gold halo so the logo blends with the dark hero */}
+        <a href="#" className="flex items-center gap-4 group shrink-0 relative" aria-label="Yakuver Solutions home">
+          {/* Soft gold halo behind the mark when over the dark hero */}
           {!scrolled && (
             <motion.span
               aria-hidden="true"
-              className="absolute -inset-x-4 -inset-y-3 rounded-[24px] pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse 70% 80% at 30% 50%, rgba(212,175,55,0.22), transparent 70%)' }}
+              className="absolute -inset-x-3 -inset-y-3 rounded-[24px] pointer-events-none"
+              style={{ background: 'radial-gradient(ellipse 70% 80% at 25% 50%, rgba(212,175,55,0.22), transparent 70%)' }}
               animate={{ opacity: [0.55, 0.9, 0.55] }}
               transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
             />
           )}
           <motion.img
-            src={logo}
-            alt="Yakuver Solutions LTD logo"
-            className="relative h-20 md:h-24 lg:h-[110px] xl:h-[120px] w-auto drop-shadow-[0_6px_24px_rgba(212,175,55,0.5)]"
-            whileHover={{ scale: 1.04 }}
+            src={mark}
+            alt=""
+            aria-hidden="true"
+            className="relative h-14 md:h-16 lg:h-[72px] xl:h-[80px] w-auto drop-shadow-[0_6px_24px_rgba(212,175,55,0.5)]"
+            whileHover={{ scale: 1.06 }}
             transition={springSnappy}
           />
+          <div className="relative flex flex-col leading-tight">
+            <span className="font-heading font-black tracking-[0.04em] text-[20px] md:text-[22px] lg:text-[26px] text-on-primary group-hover:text-gold-3 transition-colors">
+              YAKUVER
+            </span>
+            <span className="font-mono text-[10px] md:text-[10.5px] lg:text-[11px] tracking-[0.32em] text-on-primary/60 uppercase mt-0.5">
+              Solutions LTD
+            </span>
+          </div>
         </a>
 
         <ul className="hidden lg:flex items-center gap-7 xl:gap-9">
