@@ -2,10 +2,19 @@ import { motion } from 'motion/react';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import villa from '../assets/projects/villa-ref.jpg';
 import { staggerContainer, wordReveal, fadeUp, springTap } from '../lib/motion-presets';
+import { useT } from '../lib/i18n';
 
-const TAGS = ['Architecture', 'Civil Engineering', 'HVAC', 'Electrical', 'Plumbing', 'Fire Protection'];
+const TAG_KEYS = [
+  'hero.tag.arch',
+  'hero.tag.civil',
+  'hero.tag.hvac',
+  'hero.tag.electrical',
+  'hero.tag.plumbing',
+  'hero.tag.fire',
+];
 
 export function Hero() {
+  const { t } = useT();
   return (
     <section className="relative bg-primary text-on-primary overflow-hidden">
       {/* Blueprint grid */}
@@ -29,21 +38,21 @@ export function Hero() {
               className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full border border-line-dark font-mono text-[11.5px] tracking-[0.12em] uppercase text-on-primary/70 mb-7"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-gold-2 shadow-[0_0_8px_#d4af37]" />
-              Yakuver Solutions LTD · Est. Ghana
+              {t('hero.eyebrow')}
             </motion.span>
 
             <h1 className="font-heading font-black leading-[1.04] tracking-[-0.03em] mb-8 text-[clamp(2.6rem,6vw,5.2rem)]">
               <span className="block overflow-hidden">
-                <motion.span variants={wordReveal} className="inline-block">Architecture, Civil &amp;</motion.span>
+                <motion.span variants={wordReveal} className="inline-block">{t('hero.title.1')}</motion.span>
               </span>
               <span className="block overflow-hidden">
                 <motion.span variants={wordReveal} className="inline-block text-gold-shine">
-                  MEPF
+                  {t('hero.title.2')}
                 </motion.span>
-                <motion.span variants={wordReveal} className="inline-block ml-3">delivered</motion.span>
+                <motion.span variants={wordReveal} className="inline-block ml-3">{t('hero.title.3')}</motion.span>
               </span>
               <span className="block overflow-hidden">
-                <motion.span variants={wordReveal} className="inline-block text-stroke">as one.</motion.span>
+                <motion.span variants={wordReveal} className="inline-block text-stroke">{t('hero.title.4')}</motion.span>
               </span>
             </h1>
 
@@ -51,21 +60,18 @@ export function Hero() {
               variants={fadeUp}
               className="text-[clamp(1.05rem,1.25vw,1.2rem)] leading-[1.65] text-on-primary/75 max-w-[58ch] mb-9"
             >
-              A multidisciplinary engineering and construction firm building durable,
-              well-designed environments across Ghana and West Africa. From foundations
-              to commissioning — architecture, civil, mechanical, electrical, plumbing
-              and fire protection under one disciplined team.
+              {t('hero.lede')}
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-2 mb-10">
-              {TAGS.map((t) => (
+              {TAG_KEYS.map((k) => (
                 <motion.span
-                  key={t}
+                  key={k}
                   whileHover={{ y: -1, borderColor: '#c8932e' }}
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-on-primary/20 font-mono text-[11px] tracking-[0.12em] uppercase text-on-primary/85 cursor-default"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-gold-2" />
-                  {t}
+                  {t(k)}
                 </motion.span>
               ))}
             </motion.div>
@@ -78,7 +84,7 @@ export function Hero() {
                 transition={springTap}
                 className="inline-flex items-center gap-2.5 px-7 py-4 rounded-md+ bg-gold-gradient text-primary font-heading font-bold text-[15px] shadow-gold"
               >
-                Request a quotation <ArrowRight className="w-[18px] h-[18px]" />
+                {t('hero.cta.primary')} <ArrowRight className="w-[18px] h-[18px]" />
               </motion.a>
               <motion.a
                 href="#projects"
@@ -87,7 +93,7 @@ export function Hero() {
                 transition={springTap}
                 className="inline-flex items-center gap-2.5 px-7 py-4 rounded-md+ border border-on-primary/25 text-on-primary font-heading font-semibold text-[15px] hover:bg-on-primary hover:text-primary transition-colors"
               >
-                See our projects <ChevronRight className="w-[18px] h-[18px]" />
+                {t('hero.cta.secondary')} <ChevronRight className="w-[18px] h-[18px]" />
               </motion.a>
             </motion.div>
 
@@ -95,9 +101,9 @@ export function Hero() {
               variants={fadeUp}
               className="mt-12 flex flex-wrap gap-x-9 gap-y-3 text-[13.5px] text-on-primary/70 font-mono"
             >
-              <div><strong className="text-on-primary font-semibold">10+</strong> live projects</div>
-              <div><strong className="text-on-primary font-semibold">GH₵ 60M+</strong> active portfolio</div>
-              <div><strong className="text-on-primary font-semibold">Ghana · Togo</strong> footprint</div>
+              <div><strong className="text-on-primary font-semibold">10+</strong> {t('hero.meta.live')}</div>
+              <div><strong className="text-on-primary font-semibold">GH₵ 60M+</strong> {t('hero.meta.portfolio')}</div>
+              <div><strong className="text-on-primary font-semibold">Ghana · Togo</strong> {t('hero.meta.footprint')}</div>
             </motion.div>
           </motion.div>
 
@@ -153,7 +159,7 @@ export function Hero() {
                 animate={{ boxShadow: ['0 0 0 0 rgba(212,175,55,0.6)', '0 0 0 6px rgba(212,175,55,0)'] }}
                 transition={{ duration: 1.6, repeat: Infinity }}
               />
-              Residential · Modern villa
+              {t('hero.chip.residential')}
             </motion.div>
 
             {/* Project sub-tag — top-right */}
@@ -163,7 +169,7 @@ export function Hero() {
               transition={{ delay: 0.7 }}
               className="absolute top-3 right-3 z-10 px-3.5 py-2 rounded-full font-mono text-[10.5px] uppercase tracking-[0.14em] text-on-primary/70 bg-primary/65 backdrop-blur border border-line-dark"
             >
-              4-Villa cluster · Accra
+              {t('hero.chip.cluster')}
             </motion.div>
 
             {/* GHC stamp — bottom-left, integrated */}
@@ -174,9 +180,9 @@ export function Hero() {
               whileHover={{ y: -3, scale: 1.03 }}
               className="absolute bottom-4 left-4 z-10 bg-gold-gradient text-primary px-4 py-3 rounded-md+ shadow-gold cursor-default"
             >
-              <div className="font-mono text-[9.5px] tracking-[0.18em] uppercase font-bold">IN COMMISSION</div>
+              <div className="font-mono text-[9.5px] tracking-[0.18em] uppercase font-bold">{t('hero.stamp.in')}</div>
               <div className="font-heading font-black text-[1.45rem] leading-none mt-1">GH₵ 60M+</div>
-              <div className="font-mono text-[9.5px] tracking-[0.14em] uppercase mt-1.5 opacity-80">active portfolio</div>
+              <div className="font-mono text-[9.5px] tracking-[0.14em] uppercase mt-1.5 opacity-80">{t('hero.stamp.activeportfolio')}</div>
             </motion.div>
 
             {/* Discipline meta — bottom-right */}
@@ -186,9 +192,9 @@ export function Hero() {
               transition={{ delay: 1.0, type: 'spring', stiffness: 220, damping: 22 }}
               className="absolute bottom-4 right-4 z-10 bg-primary/65 backdrop-blur border border-line-dark px-4 py-3 rounded-md+ text-right"
             >
-              <div className="font-mono text-[9.5px] tracking-[0.18em] uppercase text-gold-2 font-bold">ARCHITECTURE · CIVIL · MEPF</div>
-              <div className="font-heading font-black text-[1rem] mt-1 text-on-primary">All six disciplines</div>
-              <div className="font-mono text-[9.5px] tracking-[0.14em] uppercase mt-1 text-on-primary/65">one accountable team</div>
+              <div className="font-mono text-[9.5px] tracking-[0.18em] uppercase text-gold-2 font-bold">{t('hero.disciplineMeta')}</div>
+              <div className="font-heading font-black text-[1rem] mt-1 text-on-primary">{t('hero.disciplineLabel')}</div>
+              <div className="font-mono text-[9.5px] tracking-[0.14em] uppercase mt-1 text-on-primary/65">{t('hero.disciplineSub')}</div>
             </motion.div>
           </motion.div>
         </div>

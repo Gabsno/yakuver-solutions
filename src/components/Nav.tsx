@@ -3,19 +3,22 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowRight, Phone, Mail } from 'lucide-react';
 import logo from '../assets/yakuver-logo.png';
 import { springSnappy, springTap } from '../lib/motion-presets';
+import { useT } from '../lib/i18n';
 
 const LINKS = [
-  { href: '#capabilities', label: 'Capabilities' },
-  { href: '#anatomy',      label: 'Anatomy' },
-  { href: '#about',        label: 'About' },
-  { href: '#projects',     label: 'Projects' },
-  { href: '#clients',      label: 'Clients' },
-  { href: '#contact',      label: 'Contact' },
+  { href: '#capabilities', key: 'nav.capabilities' },
+  { href: '#about',        key: 'nav.about' },
+  { href: '#process',      key: 'nav.process' },
+  { href: '#projects',     key: 'nav.projects' },
+  { href: '#team',         key: 'nav.team' },
+  { href: '#clients',      key: 'nav.clients' },
+  { href: '#contact',      key: 'nav.contact' },
 ];
 
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { lang, setLang, t } = useT();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -60,9 +63,9 @@ export function Nav() {
               transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_#16a34a]" />
-              Accepting Q2 / Q3 2026 projects
+              {t('nav.availability')}
             </motion.span>
-            <span className="hidden sm:inline">Accra · Kumasi · Lomé</span>
+            <span className="hidden sm:inline">{t('nav.locations')}</span>
           </div>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-on-primary/15 to-transparent" />
@@ -90,16 +93,16 @@ export function Nav() {
           />
         </a>
 
-        <ul className="hidden lg:flex items-center gap-10">
+        <ul className="hidden lg:flex items-center gap-9">
           {LINKS.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className={`relative font-heading text-[17px] xl:text-[18px] font-semibold transition-colors py-2 group ${
+                className={`relative font-heading text-[16px] xl:text-[17px] font-semibold transition-colors py-2 group ${
                   scrolled ? 'text-on-primary hover:text-gold-3' : 'text-on-primary/90 hover:text-gold-3'
                 }`}
               >
-                {l.label}
+                {t(l.key)}
                 <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-gold-gradient group-hover:w-full transition-all duration-300" />
               </a>
             </li>
@@ -107,14 +110,38 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-3 shrink-0">
+          {/* EN / FR toggle */}
+          <div
+            role="group"
+            aria-label="Language"
+            className={`hidden md:inline-flex items-center rounded-full p-1 text-[11.5px] font-mono tracking-[0.06em] uppercase border ${
+              scrolled ? 'border-line-dark bg-on-primary/[0.04]' : 'border-on-primary/15 bg-on-primary/[0.04]'
+            }`}
+          >
+            {(['en', 'fr'] as const).map((l) => (
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                aria-pressed={lang === l}
+                className={`px-2.5 py-1 rounded-full transition-all ${
+                  lang === l
+                    ? 'bg-gold-gradient text-primary font-bold'
+                    : 'text-on-primary/70 hover:text-on-primary'
+                }`}
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
+          </div>
+
           <motion.a
             href="#contact"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.96 }}
             transition={springTap}
-            className="hidden md:inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md+ bg-gold-gradient text-primary text-[15.5px] xl:text-[16px] font-heading font-bold shadow-gold hover:shadow-[0_20px_55px_-14px_rgba(200,147,46,0.75)] transition-shadow"
+            className="hidden md:inline-flex items-center gap-2.5 px-6 py-3 rounded-md+ bg-gold-gradient text-primary text-[14.5px] xl:text-[15.5px] font-heading font-bold shadow-gold hover:shadow-[0_20px_55px_-14px_rgba(200,147,46,0.75)] transition-shadow"
           >
-            Start a project <ArrowRight className="w-[18px] h-[18px]" />
+            {t('nav.cta')} <ArrowRight className="w-4 h-4" />
           </motion.a>
           <button
             onClick={() => setOpen((v) => !v)}
@@ -143,17 +170,32 @@ export function Nav() {
                   href={l.href}
                   className="block px-7 py-5 font-heading text-[17px] font-semibold text-on-primary hover:text-gold-3 hover:bg-on-primary/[0.04]"
                 >
-                  {l.label}
+                  {t(l.key)}
                 </a>
               </li>
             ))}
+            <li className="px-5 py-4 flex items-center justify-center gap-2 border-b border-line-dark/40">
+              {(['en', 'fr'] as const).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  className={`px-4 py-2 rounded-full font-mono text-[12px] tracking-[0.06em] transition-all ${
+                    lang === l
+                      ? 'bg-gold-gradient text-primary font-bold'
+                      : 'text-on-primary/70 border border-line-dark'
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </li>
             <li className="p-5">
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
                 className="block w-full text-center px-5 py-4 rounded-md+ bg-gold-gradient text-primary text-[15px] font-heading font-bold"
               >
-                Start a project →
+                {t('nav.cta')} →
               </a>
             </li>
           </motion.ul>
