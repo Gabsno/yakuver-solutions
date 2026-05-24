@@ -55,7 +55,7 @@ export function Footer() {
               <img
                 src={logo}
                 alt="Yakuver Solutions LTD"
-                className="h-14 lg:h-16 w-auto drop-shadow-[0_4px_14px_rgba(212,175,55,0.4)]"
+                className="h-14 lg:h-16 w-auto brightness-0 invert opacity-90 drop-shadow-[0_4px_14px_rgba(245,241,232,0.18)]"
               />
             </a>
             <p className="text-on-primary/55 text-[14px] leading-[1.7] mt-6 max-w-[36ch]">
