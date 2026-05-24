@@ -20,6 +20,26 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const { lang, setLang, t } = useT();
 
+  // Mobile-friendly nav navigation: close menu, then scroll explicitly.
+  // (Hash-only hrefs misbehave when the trigger sits inside a fixed overlay.)
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) return;
+    e.preventDefault();
+    const id = href.slice(1);
+    const target = document.getElementById(id);
+    setOpen(false);
+    // Wait for the AnimatePresence exit (~250ms) so the page is unobstructed,
+    // then scroll. scroll-margin-top in CSS handles the fixed-nav offset.
+    setTimeout(() => {
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', href);
+      } else {
+        window.location.hash = href;
+      }
+    }, 280);
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -98,6 +118,7 @@ export function Nav() {
             <li key={l.href}>
               <a
                 href={l.href}
+                onClick={(e) => handleNav(e, l.href)}
                 className={`relative font-heading text-[15.5px] xl:text-[16.5px] font-semibold transition-colors py-2 group whitespace-nowrap ${
                   scrolled ? 'text-on-primary hover:text-gold-3' : 'text-on-primary/90 hover:text-gold-3'
                 }`}
@@ -136,6 +157,7 @@ export function Nav() {
 
           <motion.a
             href="#contact"
+            onClick={(e) => handleNav(e, '#contact')}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.96 }}
             transition={springTap}
@@ -166,8 +188,8 @@ export function Nav() {
             {LINKS.map((l) => (
               <li key={l.href} className="border-b border-line-dark/40">
                 <a
-                  onClick={() => setOpen(false)}
                   href={l.href}
+                  onClick={(e) => handleNav(e, l.href)}
                   className="block px-7 py-5 font-heading text-[17px] font-semibold text-on-primary hover:text-gold-3 hover:bg-on-primary/[0.04]"
                 >
                   {t(l.key)}
@@ -192,7 +214,7 @@ export function Nav() {
             <li className="p-5">
               <a
                 href="#contact"
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleNav(e, '#contact')}
                 className="block w-full text-center px-5 py-4 rounded-md+ bg-gold-gradient text-primary text-[15px] font-heading font-bold"
               >
                 {t('nav.cta')} →
