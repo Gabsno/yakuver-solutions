@@ -11,7 +11,7 @@ const ARCH_CIVIL: Service[] = [
 ];
 
 const MEPF: Service[] = [
-  { kind: 'hvac',       name: 'HVAC & VRF Systems', desc: 'Split, ducted, VRF and chilled-water installations — sized, commissioned and maintained for tropical performance.' },
+  { kind: 'hvac',       name: 'HVAC & R Systems',   desc: 'Heating, ventilation, air-conditioning and refrigeration — splits, ducted, VRF, chilled water and commercial refrigeration, sized and commissioned for tropical performance.' },
   { kind: 'electrical', name: 'Electrical Systems', desc: 'Distribution boards, containment, lighting, power, LV/MV, generator integration and standby systems.' },
   { kind: 'plumbing',   name: 'Plumbing & Drainage',desc: 'Hot & cold water, soil & vent, pumped systems, fixture installation, rainwater and grey-water capture.' },
   { kind: 'fire',       name: 'Fire Protection',    desc: 'Fire detection, alarm, hose reels, hydrants, sprinklers and suppression — designed to NFPA / local fire service requirements.' },

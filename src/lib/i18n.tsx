@@ -34,7 +34,7 @@ const EN: Dict = {
     'A multidisciplinary engineering and construction firm building durable, well-designed environments across Ghana and West Africa. From foundations to commissioning — architecture, civil, mechanical, electrical, plumbing and fire protection under one disciplined team.',
   'hero.tag.arch':       'Architecture',
   'hero.tag.civil':      'Civil Engineering',
-  'hero.tag.hvac':       'HVAC',
+  'hero.tag.hvac':       'HVAC & R',
   'hero.tag.electrical': 'Electrical',
   'hero.tag.plumbing':   'Plumbing',
   'hero.tag.fire':       'Fire Protection',

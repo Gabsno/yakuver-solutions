@@ -179,7 +179,7 @@ export function Contact() {
                 >
                   <option value="">{t('contact.form.scope')}</option>
                   <option value="Architecture & Civil">Architecture &amp; Civil</option>
-                  <option value="HVAC / VRF">HVAC / VRF</option>
+                  <option value="HVAC & R">HVAC & R (incl. VRF, chillers, refrigeration)</option>
                   <option value="Electrical">Electrical</option>
                   <option value="Plumbing">Plumbing</option>
                   <option value="Fire Protection">Fire Protection</option>
