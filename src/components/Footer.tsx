@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import mark from '../assets/yakuver-mark.png';
+import logo from '../assets/yakuver-logo.png';
 import { staggerFast, fadeUp, sectionViewport } from '../lib/motion-presets';
 import { useT } from '../lib/i18n';
 
@@ -51,21 +51,12 @@ export function Footer() {
           className="grid grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 lg:gap-16 pb-14 border-b border-line-dark"
         >
           <motion.div variants={fadeUp}>
-            <a href="#" className="inline-flex items-center gap-3.5 group" aria-label="Yakuver Solutions LTD">
+            <a href="#" className="inline-block" aria-label="Yakuver Solutions LTD">
               <img
-                src={mark}
-                alt=""
-                aria-hidden="true"
+                src={logo}
+                alt="Yakuver Solutions LTD"
                 className="h-14 lg:h-16 w-auto drop-shadow-[0_4px_14px_rgba(212,175,55,0.4)]"
               />
-              <div className="flex flex-col leading-tight">
-                <span className="font-heading font-black text-on-primary tracking-[0.04em] text-[18px] lg:text-[20px]">
-                  YAKUVER
-                </span>
-                <span className="font-mono text-[10.5px] tracking-[0.32em] text-on-primary/55 uppercase mt-0.5">
-                  Solutions LTD
-                </span>
-              </div>
             </a>
             <p className="text-on-primary/55 text-[14px] leading-[1.7] mt-6 max-w-[36ch]">
               {t('footer.tagline')}
