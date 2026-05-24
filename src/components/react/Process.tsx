@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { ClipboardList, Pencil, Truck, Wrench, ShieldCheck } from 'lucide-react';
-import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../lib/motion-presets';
+import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
 
 type Step = {
   num: string;

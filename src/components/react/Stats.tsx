@@ -1,6 +1,6 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from 'motion/react';
 import { useEffect, useRef } from 'react';
-import { staggerContainer, fadeUp, sectionViewport } from '../lib/motion-presets';
+import { staggerContainer, fadeUp, sectionViewport } from '../../lib/motion-presets';
 
 const STATS = [
   { value: 60,  unit: 'GH₵',  label: 'Active portfolio (millions)' },

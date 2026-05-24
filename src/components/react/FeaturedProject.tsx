@@ -1,9 +1,9 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight, MapPin, Calendar, Layers } from 'lucide-react';
-import vrf from '../assets/projects/vrf-rooftop-01.jpg';
-import vrfArray from '../assets/projects/vrf-array-rooftop.jpg';
-import brazing from '../assets/projects/refrigerant-brazing.jpg';
-import { staggerContainer, fadeUp, slideInLeft, sectionViewport, springSnappy } from '../lib/motion-presets';
+import vrf from '../../assets/projects/vrf-rooftop-01.jpg';
+import vrfArray from '../../assets/projects/vrf-array-rooftop.jpg';
+import brazing from '../../assets/projects/refrigerant-brazing.jpg';
+import { staggerContainer, fadeUp, slideInLeft, sectionViewport, springSnappy } from '../../lib/motion-presets';
 
 const FACTS = [
   { label: 'Location',         value: 'Lomé, Togo',                icon: MapPin },
@@ -67,7 +67,7 @@ export function FeaturedProject() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0 rounded-xl+ overflow-hidden border border-line-dark shadow-deep"
             >
-              <img src={vrf} alt="CHU Hospital — rooftop chiller installation" className="w-full h-full object-cover" />
+              <img src={vrf.src} alt="CHU Hospital — rooftop chiller installation" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent pointer-events-none" />
             </motion.div>
 
@@ -77,7 +77,7 @@ export function FeaturedProject() {
               transition={springSnappy}
               className="absolute -bottom-6 -right-4 w-[55%] aspect-[4/5] rounded-lg+ overflow-hidden border-4 border-primary shadow-deep"
             >
-              <img src={vrfArray} alt="CHU Hospital — VRF array detail" className="w-full h-full object-cover" />
+              <img src={vrfArray.src} alt="CHU Hospital — VRF array detail" className="w-full h-full object-cover" />
             </motion.div>
 
             <motion.div
@@ -86,7 +86,7 @@ export function FeaturedProject() {
               transition={springSnappy}
               className="absolute -top-6 -left-4 w-[40%] aspect-square rounded-lg+ overflow-hidden border-4 border-primary shadow-deep"
             >
-              <img src={brazing} alt="CHU Hospital — refrigerant brazing" className="w-full h-full object-cover" />
+              <img src={brazing.src} alt="CHU Hospital — refrigerant brazing" className="w-full h-full object-cover" />
             </motion.div>
 
             {/* Floating value chip */}

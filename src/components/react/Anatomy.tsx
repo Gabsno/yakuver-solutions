@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import vrf from '../assets/projects/vrf-rooftop-01.jpg';
-import { staggerContainer, fadeUp, slideInLeft, sectionViewport, springSnappy } from '../lib/motion-presets';
+import vrf from '../../assets/projects/vrf-rooftop-01.jpg';
+import { staggerContainer, fadeUp, slideInLeft, sectionViewport, springSnappy } from '../../lib/motion-presets';
 
 const VM = [
   {
@@ -28,7 +28,7 @@ export function Anatomy() {
           className="relative aspect-[4/5] rounded-lg+ overflow-hidden shadow-medium"
         >
           <motion.img
-            src={vrf}
+            src={vrf.src}
             alt="Yakuver engineer commissioning a rooftop VRF outdoor unit on a commercial site"
             className="w-full h-full object-cover"
             whileHover={{ scale: 1.04 }}

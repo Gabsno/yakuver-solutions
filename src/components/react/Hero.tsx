@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import villa from '../assets/projects/villa-ref.jpg';
-import { staggerContainer, wordReveal, fadeUp, springTap } from '../lib/motion-presets';
-import { useT } from '../lib/i18n';
+import villa from '../../assets/projects/villa-ref.jpg';
+import { staggerContainer, wordReveal, fadeUp, springTap } from '../../lib/motion-presets';
+import { useT } from '../../lib/i18n';
 
 const TAG_KEYS = [
   'hero.tag.arch',
@@ -13,8 +13,14 @@ const TAG_KEYS = [
   'hero.tag.fire',
 ];
 
-export function Hero() {
+interface HeroProps {
+  /** Astro base URL — e.g. "/yakuver-solutions/" — so cross-page links resolve */
+  base?: string;
+}
+
+export function Hero({ base = '/' }: HeroProps) {
   const { t } = useT();
+  const b = base.endsWith('/') ? base : base + '/';
   return (
     <section className="relative bg-primary text-on-primary overflow-hidden">
       {/* Blueprint grid */}
@@ -78,7 +84,7 @@ export function Hero() {
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
               <motion.a
-                href="#contact"
+                href={b + 'contact/'}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={springTap}
@@ -87,7 +93,7 @@ export function Hero() {
                 {t('hero.cta.primary')} <ArrowRight className="w-[18px] h-[18px]" />
               </motion.a>
               <motion.a
-                href="#projects"
+                href={b + 'projects/'}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={springTap}
@@ -134,7 +140,7 @@ export function Hero() {
               }}
             >
               <motion.img
-                src={villa}
+                src={villa.src}
                 alt="Yakuver Solutions — modern 3-story residence with stone column accents, wood-paneled feature wall, glass balconies and curved entrance canopy"
                 className="w-full h-full object-cover"
                 initial={{ scale: 1.06 }}

@@ -1,0 +1,87 @@
+---
+// =============================================================================
+// Static footer — fully server-rendered, no React needed.
+// Links point at sibling pages (/about, /services, etc.) using Astro's base.
+// =============================================================================
+import logo from '../assets/yakuver-logo.png';
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + '/';
+
+const SECTIONS: { title: string; links: { label: string; href: string }[] }[] = [
+  {
+    title: 'Sitemap',
+    links: [
+      { label: 'Home',     href: base },
+      { label: 'About',    href: base + 'about/' },
+      { label: 'Services', href: base + 'services/' },
+      { label: 'Projects', href: base + 'projects/' },
+      { label: 'Contact',  href: base + 'contact/' },
+    ],
+  },
+  {
+    title: 'Capabilities',
+    links: [
+      { label: 'Architectural design', href: base + 'services/#architecture' },
+      { label: 'Civil engineering',    href: base + 'services/#civil' },
+      { label: 'HVAC & VRF',           href: base + 'services/#hvac' },
+      { label: 'Electrical systems',   href: base + 'services/#electrical' },
+      { label: 'Plumbing & drainage',  href: base + 'services/#plumbing' },
+      { label: 'Fire protection',      href: base + 'services/#fire' },
+    ],
+  },
+  {
+    title: 'Contact',
+    links: [
+      { label: '+233 24 014 5460',           href: 'tel:+233240145460' },
+      { label: '+233 30 230 1233',           href: 'tel:+233302301233' },
+      { label: 'info@yakuversolutions.com',  href: 'mailto:info@yakuversolutions.com' },
+      { label: 'Accra · Kumasi · Lomé',      href: base + 'contact/' },
+    ],
+  },
+];
+---
+
+<footer class="bg-[#050505] text-on-primary/70 pt-20 pb-7 border-t border-line-dark">
+  <div class="max-w-[1480px] mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 lg:gap-16 pb-14 border-b border-line-dark">
+      <div>
+        <a href={base} class="inline-block" aria-label="Yakuver Solutions LTD home">
+          <img
+            src={logo.src}
+            alt="Yakuver Solutions LTD"
+            width={logo.width}
+            height={logo.height}
+            class="h-14 lg:h-16 w-auto brightness-0 invert opacity-90 drop-shadow-[0_4px_14px_rgba(245,241,232,0.18)]"
+          />
+        </a>
+        <p class="text-on-primary/55 text-[14px] leading-[1.7] mt-6 max-w-[36ch]">
+          Multidisciplinary architecture, civil engineering and MEPF contractor
+          delivering integrated projects across Ghana &amp; West Africa.
+        </p>
+      </div>
+
+      {SECTIONS.map((s) => (
+        <div>
+          <h5 class="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-2 mb-5 font-medium">
+            {s.title}
+          </h5>
+          <ul class="flex flex-col gap-3">
+            {s.links.map((l) => (
+              <li>
+                <a href={l.href} class="text-[14px] text-on-primary/65 hover:text-gold-2 transition-colors">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="pt-6 flex flex-wrap justify-between items-center gap-4 font-mono text-[11px] tracking-[0.14em] text-on-primary/45">
+      <div>© {new Date().getFullYear()} Yakuver Solutions LTD — All rights reserved.</div>
+      <div>Architecture · Civil · MEPF — Delivered as one.</div>
+    </div>
+  </div>
+</footer>

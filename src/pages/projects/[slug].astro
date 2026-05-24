@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CASE_STUDIES } from '../../lib/projects';
+
+export async function getStaticPaths() {
+  return CASE_STUDIES.map((c) => ({ params: { slug: c.slug }, props: { study: c } }));
+}
+
+const { study } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const b = base.endsWith('/') ? base : base + '/';
+
+// Pre-resolved glob of all project images (Vite needs this at compile time)
+const imageMods = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/projects/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+);
+type ImageMetadata = { src: string; width: number; height: number; format: string };
+
+const resolve = (file: string): ImageMetadata | null => {
+  const key = `../../assets/projects/${file}`;
+  return (imageMods as Record<string, { default: ImageMetadata }>)[key]?.default ?? null;
+};
+const heroImg = resolve(study.hero);
+const galleryImgs = study.gallery
+  .map((f) => resolve(f))
+  .filter((x): x is ImageMetadata => x !== null);
+---
+
+<BaseLayout
+  title={`${study.name} — Yakuver Solutions LTD`}
+  description={study.summary}
+>
+  <!-- Custom dark hero showing the project hero image -->
+  <section class="relative bg-primary text-on-primary pt-[140px] lg:pt-[180px] pb-0 border-b border-line-dark overflow-hidden">
+    <div class="max-w-[1480px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-end">
+      <div class="pb-12 lg:pb-16">
+        <nav aria-label="Breadcrumb" class="mb-5 font-mono text-[11px] tracking-[0.14em] uppercase text-on-primary/55 flex flex-wrap items-center gap-2">
+          <a href={b} class="hover:text-gold-2 transition-colors">Home</a>
+          <span class="opacity-50">/</span>
+          <a href={b + 'projects/'} class="hover:text-gold-2 transition-colors">Projects</a>
+          <span class="opacity-50">/</span>
+          <span class="text-gold-2">{study.name}</span>
+        </nav>
+
+        <div class="font-mono text-[11.5px] tracking-[0.18em] uppercase text-gold-2 mb-5 inline-flex items-center gap-3">
+          <span class="inline-block w-7 h-px bg-current opacity-60"></span>
+          {study.location} · {study.sector}
+        </div>
+
+        <h1 class="font-heading font-black tracking-[-0.025em] leading-[1.05] text-[clamp(2.2rem,4.8vw,4rem)]">
+          {study.name}
+        </h1>
+
+        <p class="mt-6 text-on-primary/70 text-[clamp(1.05rem,1.15vw,1.2rem)] leading-[1.65] max-w-[60ch]">
+          {study.summary}
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-[13.5px] text-on-primary/70 font-mono">
+          <div><strong class="text-on-primary font-semibold">{study.duration}</strong></div>
+          <div><strong class="text-on-primary font-semibold">{study.value}</strong> contract value</div>
+          <div class={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-mono text-[10.5px] tracking-[0.12em] uppercase font-semibold ${
+            study.status === 'ongoing' ? 'bg-gold/15 text-gold-2 border border-gold/30' : 'bg-green-500/15 text-green-300 border border-green-500/30'
+          }`}>
+            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+            {study.status === 'ongoing' ? 'Ongoing' : 'Completed'}
+          </div>
+        </div>
+      </div>
+
+      {heroImg && (
+        <div class="relative aspect-[5/4] rounded-t-xl+ lg:rounded-tl-xl+ lg:rounded-tr-none overflow-hidden border-x border-t border-line-dark shadow-deep">
+          <img
+            src={heroImg.src}
+            width={heroImg.width}
+            height={heroImg.height}
+            alt={`${study.name} — hero`}
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent pointer-events-none"></div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="bg-background border-b border-line py-10 lg:py-12">
+    <div class="max-w-[1480px] mx-auto px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 gap-y-6">
+      {study.stats.map((s, i) => (
+        <div class={`px-2 lg:px-6 ${i > 0 ? 'lg:border-l border-line' : ''}`}>
+          <div class="font-heading text-[clamp(1.8rem,3.6vw,2.8rem)] font-black leading-none tracking-[-0.02em] text-primary">
+            {s.num}
+            {s.unit && <span class="text-gold text-[0.5em] ml-1 font-bold align-super">{s.unit}</span>}
+          </div>
+          <div class="mt-3 font-mono text-[10.5px] tracking-[0.14em] uppercase text-secondary-2">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Challenge · Approach · Outcome -->
+  <section class="bg-paper py-20 lg:py-24">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-10 grid gap-14">
+      <div>
+        <div class="font-mono text-[10.5px] tracking-[0.18em] uppercase text-gold-deep font-semibold mb-3">
+          ◆ The challenge
+        </div>
+        <h2 class="font-heading font-black text-[clamp(1.5rem,2.6vw,2rem)] text-primary leading-[1.15] mb-5">
+          What we walked into
+        </h2>
+        <p class="text-secondary text-[16.5px] leading-[1.7]">{study.challenge}</p>
+      </div>
+
+      <div>
+        <div class="font-mono text-[10.5px] tracking-[0.18em] uppercase text-gold-deep font-semibold mb-3">
+          ◆ Our approach
+        </div>
+        <h2 class="font-heading font-black text-[clamp(1.5rem,2.6vw,2rem)] text-primary leading-[1.15] mb-5">
+          How we delivered
+        </h2>
+        <ul class="grid gap-3">
+          {study.approach.map((b) => (
+            <li class="flex gap-3 items-start text-[15.5px] text-secondary leading-[1.6]">
+              <span class="mt-2 w-1.5 h-1.5 rounded-full bg-gold-deep shrink-0"></span>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <div class="font-mono text-[10.5px] tracking-[0.18em] uppercase text-gold-deep font-semibold mb-3">
+          ◆ Outcome
+        </div>
+        <h2 class="font-heading font-black text-[clamp(1.5rem,2.6vw,2rem)] text-primary leading-[1.15] mb-5">
+          Where it landed
+        </h2>
+        <p class="text-secondary text-[16.5px] leading-[1.7]">{study.outcome}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project gallery -->
+  <section class="bg-background py-20 lg:py-24 border-y border-line">
+    <div class="max-w-[1480px] mx-auto px-6 lg:px-10">
+      <h2 class="font-heading font-black text-[clamp(1.6rem,3vw,2.4rem)] text-primary leading-[1.1] mb-9">
+        On site
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        {galleryImgs.map((img, i) => (
+          <div class="rounded-lg+ overflow-hidden bg-primary group">
+            <img
+              src={img.src}
+              width={img.width}
+              height={img.height}
+              alt={`${study.name} — photo ${i + 1}`}
+              loading="lazy"
+              class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary text-on-primary py-20 lg:py-24">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-10 text-center">
+      <div class="font-mono text-[11px] tracking-[0.18em] uppercase text-gold-2 mb-4">
+        ◆ Have a similar project?
+      </div>
+      <h2 class="font-heading font-black text-[clamp(1.8rem,3.6vw,3rem)] leading-[1.1] mb-6">
+        Let's build the<br />
+        <span class="text-gold-gradient">next one together.</span>
+      </h2>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href={b + 'contact/'} class="inline-flex items-center gap-2 px-7 py-4 rounded-md+ bg-gold-gradient text-primary font-heading font-bold text-[15px] shadow-gold hover:-translate-y-0.5 transition-transform">
+          Request a quotation →
+        </a>
+        <a href={b + 'projects/'} class="inline-flex items-center gap-2 px-7 py-4 rounded-md+ border border-on-primary/25 text-on-primary font-heading font-semibold text-[15px] hover:bg-on-primary hover:text-primary transition-colors">
+          See more projects
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Linkedin, Mail } from 'lucide-react';
-import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../lib/motion-presets';
+import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
 
 type Member = {
   name: string;
@@ -101,7 +101,7 @@ export function Team() {
               <div className="aspect-[4/5] relative overflow-hidden bg-primary">
                 {m.photo ? (
                   <img
-                    src={m.photo}
+                    src={(m.photo as any)?.src ?? (m.photo as unknown as string)}
                     alt={`${m.name}, ${m.role}`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />

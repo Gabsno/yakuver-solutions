@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
-import { springSnappy, springTap } from '../lib/motion-presets';
-import { useT } from '../lib/i18n';
+import { springSnappy, springTap } from '../../lib/motion-presets';
+import { useT } from '../../lib/i18n';
 
 const WHATSAPP_NUMBER = '233240145460'; // +233 24 014 5460 (international format, no +)
 

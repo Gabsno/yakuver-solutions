@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { staggerContainer, fadeUp, staggerFast, sectionViewport } from '../lib/motion-presets';
+import { staggerContainer, fadeUp, staggerFast, sectionViewport } from '../../lib/motion-presets';
 
 type Status = 'ongoing' | 'completed';
 type Row = { idx: string; name: string; desc: string; value: string; status: Status };

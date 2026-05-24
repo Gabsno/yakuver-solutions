@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Phone, Mail, Globe } from 'lucide-react';
-import { staggerContainer, fadeUp, sectionViewport, springSnappy, springTap } from '../lib/motion-presets';
-import { useT } from '../lib/i18n';
+import { staggerContainer, fadeUp, sectionViewport, springSnappy, springTap } from '../../lib/motion-presets';
+import { useT } from '../../lib/i18n';
 
 const ROWS = [
   { typeKey: 'contact.row.mobile', value: '+233 24 014 5460',         href: 'tel:+233240145460',                       icon: Phone  },

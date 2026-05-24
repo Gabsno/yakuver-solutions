@@ -1,0 +1,70 @@
+---
+// =============================================================================
+// BaseHead — shared <head> across every page.
+// Pass per-page title / description / image / canonical via props.
+// =============================================================================
+interface Props {
+  title: string;
+  description: string;
+  /** Path under site root that this page's OG card should use. Defaults to /og-image.png */
+  image?: string;
+  /** Canonical path, e.g. '/about/' — defaults to current URL */
+  canonical?: string;
+}
+const { title, description, image = '/og-image.png', canonical } = Astro.props;
+
+const SITE = Astro.site?.toString().replace(/\/$/, '') ?? 'https://gabsno.github.io';
+const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
+const ogImageURL = new URL(BASE + image.replace(/^\//, ''), SITE).toString();
+const canonicalURL = new URL((canonical ?? Astro.url.pathname), SITE).toString();
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0a0a" />
+
+<link rel="icon" type="image/x-icon" href={BASE + 'favicon.ico'} />
+<link rel="icon" type="image/png" sizes="16x16" href={BASE + 'favicon-16x16.png'} />
+<link rel="icon" type="image/png" sizes="32x32" href={BASE + 'favicon-32x32.png'} />
+<link rel="icon" type="image/png" sizes="48x48" href={BASE + 'favicon-48x48.png'} />
+<link rel="apple-touch-icon" sizes="180x180" href={BASE + 'apple-touch-icon.png'} />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="author" content="Yakuver Solutions LTD" />
+<link rel="canonical" href={canonicalURL} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Yakuver Solutions LTD" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_GH" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+
+<!-- Structured data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Yakuver Solutions LTD",
+  "description": description,
+  "url": canonicalURL,
+  "logo": new URL(BASE + 'apple-touch-icon.png', SITE).toString(),
+  "image": ogImageURL,
+  "telephone": "+233240145460",
+  "email": "info@yakuversolutions.com",
+  "address": [
+    { "@type": "PostalAddress", "addressLocality": "Accra", "addressCountry": "Ghana" },
+    { "@type": "PostalAddress", "addressLocality": "Kumasi", "addressCountry": "Ghana" },
+    { "@type": "PostalAddress", "addressLocality": "Lomé",  "addressCountry": "Togo" }
+  ],
+  "areaServed": ["Ghana", "Togo", "West Africa"],
+  "sameAs": []
+})} />

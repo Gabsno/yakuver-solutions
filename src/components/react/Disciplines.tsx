@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../lib/motion-presets';
+import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
 import { ServiceIcon3D, type IconKind } from './ServiceIcon3D';
 
 type Service = { kind: IconKind; name: string; desc: string };

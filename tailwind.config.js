@@ -5,7 +5,9 @@
 // dark surfaces; bone-cream is used for paper sections.
 // =============================================================================
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,md,mdx}',
+  ],
   theme: {
     extend: {
       colors: {

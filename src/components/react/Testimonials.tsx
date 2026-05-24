@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
-import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../lib/motion-presets';
+import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
 
 type Testimonial = {
   quote: string;

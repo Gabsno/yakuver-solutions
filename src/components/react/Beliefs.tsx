@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { staggerContainer, fadeUp, sectionViewport } from '../lib/motion-presets';
+import { staggerContainer, fadeUp, sectionViewport } from '../../lib/motion-presets';
 
 const BELIEFS = [
   { num: '01 / INNOVATION', title: 'Forward-thinking, by default.', body: 'We embrace new technologies and continuously explore better methods, materials and systems to stay ahead in a rapidly evolving construction landscape.' },

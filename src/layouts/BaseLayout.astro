@@ -1,0 +1,39 @@
+---
+// =============================================================================
+// BaseLayout — the page shell every route uses.
+// Slots in <BaseHead>, the React Nav island, page content, the Astro Footer,
+// and the WhatsApp floating button island.
+// =============================================================================
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import { Nav } from '../components/react/Nav';
+import { WhatsAppFAB } from '../components/react/WhatsAppFAB';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Set to true on pages whose hero is dark — affects nav contrast on load */
+  darkHero?: boolean;
+}
+const { title, description } = Astro.props;
+
+// Base URL for the Nav React island — keeps cross-page links correct under
+// /yakuver-solutions/ or a future custom domain
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="relative min-h-screen bg-background text-foreground">
+    <Nav base={base} client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFAB client:visible />
+  </body>
+</html>

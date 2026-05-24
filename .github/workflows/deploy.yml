@@ -29,9 +29,9 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
-      - name: Build (Vite)
+      - name: Build (Astro)
         run: npm run build
         env:
           # Flip to '1' once a custom domain (CNAME) is configured in repo Settings → Pages
@@ -39,7 +39,7 @@ jobs:
 
       - name: Add .nojekyll
         # Prevents GitHub Pages from running the output through Jekyll
-        # (which mangles _underscore-prefixed asset names produced by Vite)
+        # (which mangles _underscore-prefixed asset names produced by the bundler)
         run: touch dist/.nojekyll
 
       - name: Upload Pages artifact

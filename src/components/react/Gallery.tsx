@@ -1,14 +1,14 @@
 import { motion } from 'motion/react';
-import { staggerFast, fadeUp, sectionViewport, springSnappy } from '../lib/motion-presets';
+import { staggerFast, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
 
-import vrfArray from '../assets/projects/vrf-array-rooftop.jpg';
-import brazing from '../assets/projects/refrigerant-brazing.jpg';
-import cassette from '../assets/projects/ceiling-cassette.jpg';
-import splitAc from '../assets/projects/split-ac-install.jpg';
-import vrf1 from '../assets/projects/vrf-rooftop-01.jpg';
-import scaffold from '../assets/projects/ceiling-tradesman.jpg';
-import cassette2 from '../assets/projects/ceiling-cassette-02.jpg';
-import indoor from '../assets/projects/indoor-unit-install.jpg';
+import vrfArray from '../../assets/projects/vrf-array-rooftop.jpg';
+import brazing from '../../assets/projects/refrigerant-brazing.jpg';
+import cassette from '../../assets/projects/ceiling-cassette.jpg';
+import splitAc from '../../assets/projects/split-ac-install.jpg';
+import vrf1 from '../../assets/projects/vrf-rooftop-01.jpg';
+import scaffold from '../../assets/projects/ceiling-tradesman.jpg';
+import cassette2 from '../../assets/projects/ceiling-cassette-02.jpg';
+import indoor from '../../assets/projects/indoor-unit-install.jpg';
 
 const ITEMS = [
   { src: vrfArray, caption: 'VRF rooftop array · Accra commercial',  span: 'lg:col-span-2 lg:row-span-2' },
@@ -41,7 +41,7 @@ export function Gallery() {
               className={`group relative rounded-lg+ overflow-hidden bg-primary ${it.span ?? ''}`}
             >
               <motion.img
-                src={it.src}
+                src={(it.src as any).src ?? (it.src as unknown as string)}
                 alt={it.caption}
                 loading="lazy"
                 className="w-full h-full object-cover"

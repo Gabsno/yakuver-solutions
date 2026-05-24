@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
-import logo from '../assets/yakuver-logo.png';
-import { staggerFast, fadeUp, sectionViewport } from '../lib/motion-presets';
-import { useT } from '../lib/i18n';
+import logo from '../../assets/yakuver-logo.png';
+import { staggerFast, fadeUp, sectionViewport } from '../../lib/motion-presets';
+import { useT } from '../../lib/i18n';
 
 export function Footer() {
   const { t } = useT();
@@ -53,7 +53,7 @@ export function Footer() {
           <motion.div variants={fadeUp}>
             <a href="#" className="inline-block" aria-label="Yakuver Solutions LTD">
               <img
-                src={logo}
+                src={logo.src}
                 alt="Yakuver Solutions LTD"
                 className="h-14 lg:h-16 w-auto brightness-0 invert opacity-90 drop-shadow-[0_4px_14px_rgba(245,241,232,0.18)]"
               />

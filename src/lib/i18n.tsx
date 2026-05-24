@@ -1,15 +1,12 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 
 // =============================================================================
-// Lightweight i18n — no library. Two dictionaries (en, fr) and a useT() hook.
-// Currently translates the most visible marketing strings (nav, hero, CTAs,
-// contact). Body copy in long-form sections (Anatomy, Beliefs, Process,
-// Featured Project, Testimonials, Team) is English-only for now — fall back
-// gracefully via t('key') returning the key if no translation exists.
+// Provider-free i18n — works across Astro page navigations and inside any React
+// island. State lives in localStorage and broadcasts via a 'storage' event so
+// all islands on the page stay in sync.
 //
-// To translate more strings:
-//   1. Add the key + value to both EN and FR dictionaries below
-//   2. Replace the literal string in the component with `t('your.key')`
+// EN dictionary is the source of truth; FR dictionary is sparse and falls back
+// to EN at lookup time. Add keys to either dictionary as needed.
 // =============================================================================
 
 export type Lang = 'en' | 'fr';
@@ -18,12 +15,10 @@ type Dict = Record<string, string>;
 
 const EN: Dict = {
   // Nav
-  'nav.capabilities': 'Capabilities',
+  'nav.home':         'Home',
   'nav.about':        'About',
-  'nav.process':      'Process',
+  'nav.services':     'Services',
   'nav.projects':     'Projects',
-  'nav.team':         'Team',
-  'nav.clients':      'Clients',
   'nav.contact':      'Contact',
   'nav.cta':          'Start a project',
   'nav.availability': 'Accepting Q2 / Q3 2026 projects',
@@ -56,194 +51,83 @@ const EN: Dict = {
   'hero.disciplineLabel':  'All six disciplines',
   'hero.disciplineSub':    'one accountable team',
 
-  // Contact form
-  'contact.label':        'Contact · 10',
-  'contact.title.1':      "Let's talk about",
-  'contact.title.2':      'your project.',
-  'contact.lede':
-    "Whether it's a 4-villa cluster, a 13-story tower or a chilled-water hospital retrofit — send the scope, drawings or sketch and we'll come back within 24 hours with a route forward.",
-  'contact.row.mobile': 'Mobile',
-  'contact.row.office': 'Office',
-  'contact.row.email':  'Email',
-  'contact.row.web':    'Web',
-  'contact.form.eyebrow': 'Request a quote',
-  'contact.form.title':   'Tell us about your project.',
-  'contact.form.lede':    "Quick intake — we'll come back within 24 hours.",
-  'contact.form.name':    'Your name *',
-  'contact.form.email':   'Email *',
-  'contact.form.scope':   'Scope *',
-  'contact.form.message': 'Tell us about the project — location, size, programme *',
-  'contact.form.send':    'Send via email',
-  'contact.form.sending': 'Sending…',
-  'contact.form.sent.title': 'Thanks — got it.',
-  'contact.form.sent.body':  "We'll reply within 24 hours.",
-  'contact.form.fallback':   'Opens your email client · or call',
-
-  // WhatsApp FAB
+  // WhatsApp
   'wa.eyebrow':  'Quick chat',
   'wa.title':    'Talk to the Yakuver team',
   'wa.body':     'Send scope, drawings or a sketch on WhatsApp — we typically reply within an hour during work hours.',
   'wa.btn':      'Open WhatsApp →',
-
-  // Footer
-  'footer.tagline':
-    'Multidisciplinary architecture, civil engineering and MEPF contractor delivering integrated projects across Ghana & West Africa.',
-  'footer.col.capabilities': 'Capabilities',
-  'footer.col.company':      'Company',
-  'footer.col.contact':      'Contact',
-  'footer.cap.arch':         'Architectural design',
-  'footer.cap.civil':        'Civil engineering',
-  'footer.cap.hvac':         'HVAC & VRF',
-  'footer.cap.electrical':   'Electrical systems',
-  'footer.cap.plumbing':     'Plumbing',
-  'footer.cap.fire':         'Fire protection',
-  'footer.co.about':         'About',
-  'footer.co.process':       'Process',
-  'footer.co.projects':      'Projects',
-  'footer.co.team':          'Team',
-  'footer.co.clients':       'Clients',
-  'footer.co.contact':       'Contact',
-  'footer.contact.locations':'Accra · Kumasi · Lomé',
-  'footer.rights':           'All rights reserved.',
-  'footer.tagline.short':    'Architecture · Civil · MEPF — Delivered as one.',
 };
 
 const FR: Dict = {
-  // Nav
-  'nav.capabilities': 'Compétences',
+  // (Sparse — falls back to EN on miss. Filled out properly in a later pass.)
+  'nav.home':         'Accueil',
   'nav.about':        'À propos',
-  'nav.process':      'Processus',
+  'nav.services':     'Services',
   'nav.projects':     'Projets',
-  'nav.team':         'Équipe',
-  'nav.clients':      'Clients',
   'nav.contact':      'Contact',
   'nav.cta':          'Démarrer un projet',
   'nav.availability': 'Projets ouverts T2 / T3 2026',
-  'nav.locations':    'Accra · Kumasi · Lomé',
-
-  // Hero
-  'hero.eyebrow':     'Yakuver Solutions LTD · Basée au Ghana',
-  'hero.title.1':     'Architecture, Génie civil &',
-  'hero.title.2':     'MEPF',
-  'hero.title.3':     'livrés',
-  'hero.title.4':     'comme un seul.',
-  'hero.lede':
-    "Un cabinet multidisciplinaire d'ingénierie et de construction qui bâtit des environnements durables et bien conçus à travers le Ghana et l'Afrique de l'Ouest. Des fondations à la mise en service — architecture, génie civil, mécanique, électricité, plomberie et protection incendie au sein d'une seule équipe disciplinée.",
-  'hero.tag.arch':       'Architecture',
-  'hero.tag.civil':      'Génie civil',
-  'hero.tag.hvac':       'CVC',
-  'hero.tag.electrical': 'Électricité',
-  'hero.tag.plumbing':   'Plomberie',
-  'hero.tag.fire':       'Protection incendie',
-  'hero.cta.primary':   'Demander un devis',
-  'hero.cta.secondary': 'Voir nos projets',
-  'hero.meta.live':     'projets en cours',
-  'hero.meta.portfolio':'portefeuille actif',
-  'hero.meta.footprint':'présence',
-  'hero.chip.residential': 'Résidentiel · Villa moderne',
-  'hero.chip.cluster':     'Lotissement 4 villas · Accra',
-  'hero.stamp.in':         'EN COURS',
-  'hero.stamp.activeportfolio': 'portefeuille actif',
-  'hero.disciplineMeta':   'ARCHITECTURE · GÉNIE CIVIL · MEPF',
-  'hero.disciplineLabel':  'Les six disciplines',
-  'hero.disciplineSub':    'une seule équipe responsable',
-
-  // Contact form
-  'contact.label':        'Contact · 10',
-  'contact.title.1':      'Parlons de',
-  'contact.title.2':      'votre projet.',
-  'contact.lede':
-    "Qu'il s'agisse d'un lotissement de 4 villas, d'une tour de 13 étages ou d'une rénovation d'eau glacée pour un hôpital — envoyez le périmètre, les plans ou un croquis et nous revenons vers vous sous 24 heures avec une feuille de route.",
-  'contact.row.mobile': 'Mobile',
-  'contact.row.office': 'Bureau',
-  'contact.row.email':  'E-mail',
-  'contact.row.web':    'Web',
-  'contact.form.eyebrow': 'Demander un devis',
-  'contact.form.title':   'Parlez-nous de votre projet.',
-  'contact.form.lede':    "Formulaire rapide — réponse sous 24 heures.",
-  'contact.form.name':    'Votre nom *',
-  'contact.form.email':   'E-mail *',
-  'contact.form.scope':   'Périmètre *',
-  'contact.form.message': "Décrivez le projet — lieu, taille, calendrier *",
-  'contact.form.send':    'Envoyer par e-mail',
-  'contact.form.sending': 'Envoi…',
-  'contact.form.sent.title': 'Merci — bien reçu.',
-  'contact.form.sent.body':  'Réponse sous 24 heures.',
-  'contact.form.fallback':   'Ouvre votre client mail · ou appelez',
-
-  // WhatsApp FAB
-  'wa.eyebrow':  'Chat rapide',
-  'wa.title':    "Parlez à l'équipe Yakuver",
-  'wa.body':     'Envoyez périmètre, plans ou croquis sur WhatsApp — nous répondons généralement sous une heure en journée.',
-  'wa.btn':      'Ouvrir WhatsApp →',
-
-  // Footer
-  'footer.tagline':
-    "Entreprise multidisciplinaire d'architecture, de génie civil et de MEPF, livrant des projets intégrés à travers le Ghana et l'Afrique de l'Ouest.",
-  'footer.col.capabilities': 'Compétences',
-  'footer.col.company':      'Entreprise',
-  'footer.col.contact':      'Contact',
-  'footer.cap.arch':         'Conception architecturale',
-  'footer.cap.civil':        'Génie civil',
-  'footer.cap.hvac':         'CVC & VRF',
-  'footer.cap.electrical':   'Systèmes électriques',
-  'footer.cap.plumbing':     'Plomberie',
-  'footer.cap.fire':         'Protection incendie',
-  'footer.co.about':         'À propos',
-  'footer.co.process':       'Processus',
-  'footer.co.projects':      'Projets',
-  'footer.co.team':          'Équipe',
-  'footer.co.clients':       'Clients',
-  'footer.co.contact':       'Contact',
-  'footer.contact.locations':'Accra · Kumasi · Lomé',
-  'footer.rights':           'Tous droits réservés.',
-  'footer.tagline.short':    'Architecture · Génie civil · MEPF — Livrés comme un seul.',
 };
 
 const DICTS: Record<Lang, Dict> = { en: EN, fr: FR };
-
-interface LangContextValue {
-  lang: Lang;
-  setLang: (l: Lang) => void;
-  t: (key: string) => string;
-}
-
-const LangContext = createContext<LangContextValue>({
-  lang: 'en',
-  setLang: () => {},
-  t: (k) => k,
-});
-
 const STORAGE_KEY = 'yakuver-lang';
 
-export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(() => {
-    if (typeof window === 'undefined') return 'en';
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === 'en' || saved === 'fr') return saved;
-    // Default to French if browser language starts with 'fr'
-    if (navigator.language?.toLowerCase().startsWith('fr')) return 'fr';
-    return 'en';
-  });
+// ---- vanilla store the hook subscribes to (no Provider needed) ----
+function getInitial(): Lang {
+  if (typeof window === 'undefined') return 'en';
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === 'en' || saved === 'fr') return saved;
+  if (navigator.language?.toLowerCase().startsWith('fr')) return 'fr';
+  return 'en';
+}
 
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
+let _lang: Lang | null = null;
+const listeners = new Set<() => void>();
 
-  const setLang = (l: Lang) => {
-    setLangState(l);
-    try { localStorage.setItem(STORAGE_KEY, l); } catch {}
+function getSnapshot(): Lang {
+  if (_lang === null) _lang = getInitial();
+  return _lang;
+}
+function subscribe(cb: () => void) {
+  listeners.add(cb);
+  const storageHandler = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY) {
+      _lang = getInitial();
+      listeners.forEach((l) => l());
+    }
   };
+  if (typeof window !== 'undefined') window.addEventListener('storage', storageHandler);
+  return () => {
+    listeners.delete(cb);
+    if (typeof window !== 'undefined') window.removeEventListener('storage', storageHandler);
+  };
+}
+function getServerSnapshot(): Lang {
+  return 'en';
+}
 
-  const t = (key: string) => DICTS[lang][key] ?? DICTS.en[key] ?? key;
-
-  return (
-    <LangContext.Provider value={{ lang, setLang, t }}>
-      {children}
-    </LangContext.Provider>
-  );
+export function setLang(l: Lang) {
+  _lang = l;
+  try { localStorage.setItem(STORAGE_KEY, l); } catch {}
+  if (typeof document !== 'undefined') document.documentElement.lang = l;
+  listeners.forEach((cb) => cb());
 }
 
 export function useT() {
-  return useContext(LangContext);
+  const lang = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') document.documentElement.lang = lang;
+  }, [lang]);
+
+  const t = (key: string) => DICTS[lang][key] ?? DICTS.en[key] ?? key;
+  return { lang, setLang, t };
+}
+
+// Plain helper for non-React contexts (e.g. Astro components, future SSR)
+export function getLang(): Lang {
+  return getSnapshot();
+}
+export function translate(key: string, lang: Lang = getSnapshot()): string {
+  return DICTS[lang][key] ?? DICTS.en[key] ?? key;
 }

@@ -1,23 +1,23 @@
 import { motion } from 'motion/react';
-import { staggerFast, fadeUp, sectionViewport, springSnappy } from '../lib/motion-presets';
+import { staggerFast, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
 
-import presidency from '../assets/clients/presidency-ghana.png';
-import kasapreko from '../assets/clients/kasapreko.png';
-import lmi from '../assets/clients/lmi-holdings.png';
-import egl from '../assets/clients/egl.png';
-import voltaserene from '../assets/clients/voltaserene.png';
-import kelmghanna from '../assets/clients/kelm-ghanna.png';
-import hvactech from '../assets/clients/hvac-tech.png';
-import teco from '../assets/clients/teco-africa.png';
-import structcon from '../assets/clients/structcon.png';
-import nasy from '../assets/clients/nasy-construction.png';
-import keyArch from '../assets/clients/key-architectural.png';
-import skol from '../assets/clients/skol-consult.png';
-import yedent from '../assets/clients/yedent-agro.png';
-import starbites from '../assets/clients/starbites.jpg';
-import uca from '../assets/clients/unique-child-academy.png';
-import ipc from '../assets/clients/international-palace-church.png';
-import methodist from '../assets/clients/methodist-bread-of-life.png';
+import presidency from '../../assets/clients/presidency-ghana.png';
+import kasapreko from '../../assets/clients/kasapreko.png';
+import lmi from '../../assets/clients/lmi-holdings.png';
+import egl from '../../assets/clients/egl.png';
+import voltaserene from '../../assets/clients/voltaserene.png';
+import kelmghanna from '../../assets/clients/kelm-ghanna.png';
+import hvactech from '../../assets/clients/hvac-tech.png';
+import teco from '../../assets/clients/teco-africa.png';
+import structcon from '../../assets/clients/structcon.png';
+import nasy from '../../assets/clients/nasy-construction.png';
+import keyArch from '../../assets/clients/key-architectural.png';
+import skol from '../../assets/clients/skol-consult.png';
+import yedent from '../../assets/clients/yedent-agro.png';
+import starbites from '../../assets/clients/starbites.jpg';
+import uca from '../../assets/clients/unique-child-academy.png';
+import ipc from '../../assets/clients/international-palace-church.png';
+import methodist from '../../assets/clients/methodist-bread-of-life.png';
 
 const CLIENTS = [
   { src: presidency,  name: 'Presidency, Republic of Ghana',     url: 'https://presidency.gov.gh' },
@@ -102,7 +102,7 @@ export function Clients() {
               </div>
 
               <img
-                src={c.src}
+                src={(c.src as any).src ?? (c.src as unknown as string)}
                 alt={c.name}
                 loading="lazy"
                 className="relative z-[1] max-w-[82%] max-h-[72%] object-contain transition-transform duration-500 ease-out group-hover:scale-110"
