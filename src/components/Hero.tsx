@@ -152,7 +152,7 @@ export function Hero() {
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="absolute top-3 left-3 z-10 inline-flex items-center gap-2 px-3.5 py-2 rounded-full font-mono text-[10.5px] uppercase tracking-[0.14em] text-on-primary/85 bg-primary/65 backdrop-blur border border-gold/30"
+              className="absolute top-3 left-3 z-10 inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.12em] sm:tracking-[0.14em] text-on-primary/85 bg-primary/65 backdrop-blur border border-gold/30 max-w-[46%] sm:max-w-none"
             >
               <motion.span
                 className="w-1.5 h-1.5 rounded-full bg-gold-2"
@@ -167,7 +167,7 @@ export function Hero() {
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="absolute top-3 right-3 z-10 px-3.5 py-2 rounded-full font-mono text-[10.5px] uppercase tracking-[0.14em] text-on-primary/70 bg-primary/65 backdrop-blur border border-line-dark"
+              className="absolute top-3 right-3 z-10 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.12em] sm:tracking-[0.14em] text-on-primary/70 bg-primary/65 backdrop-blur border border-line-dark max-w-[46%] sm:max-w-none truncate"
             >
               {t('hero.chip.cluster')}
             </motion.div>
@@ -178,19 +178,19 @@ export function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.9, type: 'spring', stiffness: 220, damping: 22 }}
               whileHover={{ y: -3, scale: 1.03 }}
-              className="absolute bottom-4 left-4 z-10 bg-gold-gradient text-primary px-4 py-3 rounded-md+ shadow-gold cursor-default"
+              className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 bg-gold-gradient text-primary px-3 py-2 sm:px-4 sm:py-3 rounded-md+ shadow-gold cursor-default"
             >
-              <div className="font-mono text-[9.5px] tracking-[0.18em] uppercase font-bold">{t('hero.stamp.in')}</div>
-              <div className="font-heading font-black text-[1.45rem] leading-none mt-1">GH₵ 60M+</div>
-              <div className="font-mono text-[9.5px] tracking-[0.14em] uppercase mt-1.5 opacity-80">{t('hero.stamp.activeportfolio')}</div>
+              <div className="font-mono text-[9px] sm:text-[9.5px] tracking-[0.18em] uppercase font-bold">{t('hero.stamp.in')}</div>
+              <div className="font-heading font-black text-[1.2rem] sm:text-[1.45rem] leading-none mt-1">GH₵ 60M+</div>
+              <div className="font-mono text-[9px] sm:text-[9.5px] tracking-[0.14em] uppercase mt-1 sm:mt-1.5 opacity-80">{t('hero.stamp.activeportfolio')}</div>
             </motion.div>
 
-            {/* Discipline meta — bottom-right */}
+            {/* Discipline meta — bottom-right (hidden on mobile to avoid overlap) */}
             <motion.div
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.0, type: 'spring', stiffness: 220, damping: 22 }}
-              className="absolute bottom-4 right-4 z-10 bg-primary/65 backdrop-blur border border-line-dark px-4 py-3 rounded-md+ text-right"
+              className="hidden sm:block absolute bottom-4 right-4 z-10 bg-primary/65 backdrop-blur border border-line-dark px-4 py-3 rounded-md+ text-right max-w-[55%]"
             >
               <div className="font-mono text-[9.5px] tracking-[0.18em] uppercase text-gold-2 font-bold">{t('hero.disciplineMeta')}</div>
               <div className="font-heading font-black text-[1rem] mt-1 text-on-primary">{t('hero.disciplineLabel')}</div>
