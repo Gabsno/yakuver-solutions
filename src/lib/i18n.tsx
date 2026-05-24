@@ -84,6 +84,28 @@ const EN: Dict = {
   'wa.title':    'Talk to the Yakuver team',
   'wa.body':     'Send scope, drawings or a sketch on WhatsApp — we typically reply within an hour during work hours.',
   'wa.btn':      'Open WhatsApp →',
+
+  // Footer
+  'footer.tagline':
+    'Multidisciplinary architecture, civil engineering and MEPF contractor delivering integrated projects across Ghana & West Africa.',
+  'footer.col.capabilities': 'Capabilities',
+  'footer.col.company':      'Company',
+  'footer.col.contact':      'Contact',
+  'footer.cap.arch':         'Architectural design',
+  'footer.cap.civil':        'Civil engineering',
+  'footer.cap.hvac':         'HVAC & VRF',
+  'footer.cap.electrical':   'Electrical systems',
+  'footer.cap.plumbing':     'Plumbing',
+  'footer.cap.fire':         'Fire protection',
+  'footer.co.about':         'About',
+  'footer.co.process':       'Process',
+  'footer.co.projects':      'Projects',
+  'footer.co.team':          'Team',
+  'footer.co.clients':       'Clients',
+  'footer.co.contact':       'Contact',
+  'footer.contact.locations':'Accra · Kumasi · Lomé',
+  'footer.rights':           'All rights reserved.',
+  'footer.tagline.short':    'Architecture · Civil · MEPF — Delivered as one.',
 };
 
 const FR: Dict = {
@@ -154,6 +176,28 @@ const FR: Dict = {
   'wa.title':    "Parlez à l'équipe Yakuver",
   'wa.body':     'Envoyez périmètre, plans ou croquis sur WhatsApp — nous répondons généralement sous une heure en journée.',
   'wa.btn':      'Ouvrir WhatsApp →',
+
+  // Footer
+  'footer.tagline':
+    "Entreprise multidisciplinaire d'architecture, de génie civil et de MEPF, livrant des projets intégrés à travers le Ghana et l'Afrique de l'Ouest.",
+  'footer.col.capabilities': 'Compétences',
+  'footer.col.company':      'Entreprise',
+  'footer.col.contact':      'Contact',
+  'footer.cap.arch':         'Conception architecturale',
+  'footer.cap.civil':        'Génie civil',
+  'footer.cap.hvac':         'CVC & VRF',
+  'footer.cap.electrical':   'Systèmes électriques',
+  'footer.cap.plumbing':     'Plomberie',
+  'footer.cap.fire':         'Protection incendie',
+  'footer.co.about':         'À propos',
+  'footer.co.process':       'Processus',
+  'footer.co.projects':      'Projets',
+  'footer.co.team':          'Équipe',
+  'footer.co.clients':       'Clients',
+  'footer.co.contact':       'Contact',
+  'footer.contact.locations':'Accra · Kumasi · Lomé',
+  'footer.rights':           'Tous droits réservés.',
+  'footer.tagline.short':    'Architecture · Génie civil · MEPF — Livrés comme un seul.',
 };
 
 const DICTS: Record<Lang, Dict> = { en: EN, fr: FR };

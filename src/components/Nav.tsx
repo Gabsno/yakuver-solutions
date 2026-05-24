@@ -93,12 +93,12 @@ export function Nav() {
           />
         </a>
 
-        <ul className="hidden lg:flex items-center gap-9">
+        <ul className="hidden lg:flex items-center gap-7 xl:gap-9">
           {LINKS.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className={`relative font-heading text-[16px] xl:text-[17px] font-semibold transition-colors py-2 group ${
+                className={`relative font-heading text-[15.5px] xl:text-[16.5px] font-semibold transition-colors py-2 group whitespace-nowrap ${
                   scrolled ? 'text-on-primary hover:text-gold-3' : 'text-on-primary/90 hover:text-gold-3'
                 }`}
               >
