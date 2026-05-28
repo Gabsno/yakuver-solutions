@@ -119,6 +119,16 @@ const DICTS: Record<Lang, Dict> = { en: EN, fr: FR };
 const STORAGE_KEY = 'yakuver-lang';
 
 // ---- vanilla store the hook subscribes to (no Provider needed) ----
+//
+// CRITICAL: Astro code-splits each React island into its own bundle, which
+// means a module-level `let _lang` would be a separate variable per island.
+// To stay in sync, we (a) read from localStorage on every snapshot, and
+// (b) broadcast a custom window event whenever setLang is called so other
+// islands re-render. Storage events alone don't work because they only
+// fire CROSS-TAB, not within the same tab.
+//
+const CHANGE_EVENT = 'yakuver:lang-change';
+
 function getInitial(): Lang {
   if (typeof window === 'undefined') return 'en';
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -127,36 +137,32 @@ function getInitial(): Lang {
   return 'en';
 }
 
-let _lang: Lang | null = null;
-const listeners = new Set<() => void>();
-
 function getSnapshot(): Lang {
-  if (_lang === null) _lang = getInitial();
-  return _lang;
+  // Always re-read from localStorage so this works across islands.
+  return getInitial();
 }
+
 function subscribe(cb: () => void) {
-  listeners.add(cb);
-  const storageHandler = (e: StorageEvent) => {
-    if (e.key === STORAGE_KEY) {
-      _lang = getInitial();
-      listeners.forEach((l) => l());
-    }
-  };
-  if (typeof window !== 'undefined') window.addEventListener('storage', storageHandler);
+  if (typeof window === 'undefined') return () => {};
+  const handler = () => cb();
+  window.addEventListener(CHANGE_EVENT, handler);
+  window.addEventListener('storage', (e) => { if (e.key === STORAGE_KEY) cb(); });
   return () => {
-    listeners.delete(cb);
-    if (typeof window !== 'undefined') window.removeEventListener('storage', storageHandler);
+    window.removeEventListener(CHANGE_EVENT, handler);
   };
 }
+
 function getServerSnapshot(): Lang {
   return 'en';
 }
 
 export function setLang(l: Lang) {
-  _lang = l;
   try { localStorage.setItem(STORAGE_KEY, l); } catch {}
   if (typeof document !== 'undefined') document.documentElement.lang = l;
-  listeners.forEach((cb) => cb());
+  // Notify every subscriber in every island on the page
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent(CHANGE_EVENT, { detail: { lang: l } }));
+  }
 }
 
 export function useT() {
