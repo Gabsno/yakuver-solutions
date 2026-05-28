@@ -56,6 +56,29 @@ const EN: Dict = {
   'wa.title':    'Talk to the Yakuver team',
   'wa.body':     'Send scope, drawings or a sketch on WhatsApp - we typically reply within an hour during work hours.',
   'wa.btn':      'Open WhatsApp →',
+
+  // Contact page
+  'contact.label':        'Contact',
+  'contact.title.1':      "Let's talk about",
+  'contact.title.2':      'your project.',
+  'contact.lede':
+    "Whether it's a 4-villa cluster, a 13-story tower or a chilled-water hospital retrofit, send the scope, drawings or sketch and we'll come back within 24 hours with a route forward.",
+  'contact.row.mobile':   'Mobile',
+  'contact.row.office':   'Office',
+  'contact.row.email':    'Email',
+  'contact.row.web':      'Web',
+  'contact.form.eyebrow': 'Request a quote',
+  'contact.form.title':   'Tell us about your project.',
+  'contact.form.lede':    "Quick intake. We'll come back within 24 hours.",
+  'contact.form.name':    'Your name *',
+  'contact.form.email':   'Email *',
+  'contact.form.scope':   'Scope *',
+  'contact.form.message': 'Tell us about the project: location, size, programme *',
+  'contact.form.send':    'Send via email',
+  'contact.form.sending': 'Sending...',
+  'contact.form.sent.title': 'Thanks. Got it.',
+  'contact.form.sent.body':  "We'll reply within 24 hours.",
+  'contact.form.fallback':   'Opens your email client or call',
 };
 
 const FR: Dict = {
@@ -67,6 +90,29 @@ const FR: Dict = {
   'nav.contact':      'Contact',
   'nav.cta':          'Démarrer un projet',
   'nav.availability': 'Projets ouverts T2 / T3 2026',
+
+  // Contact page (FR)
+  'contact.label':        'Contact',
+  'contact.title.1':      'Parlons de',
+  'contact.title.2':      'votre projet.',
+  'contact.lede':
+    "Lotissement de 4 villas, tour de 13 étages ou rénovation d'eau glacée pour un hôpital ? Envoyez le périmètre, les plans ou un croquis et nous revenons vers vous sous 24 heures.",
+  'contact.row.mobile':   'Mobile',
+  'contact.row.office':   'Bureau',
+  'contact.row.email':    'E-mail',
+  'contact.row.web':      'Web',
+  'contact.form.eyebrow': 'Demander un devis',
+  'contact.form.title':   'Parlez-nous de votre projet.',
+  'contact.form.lede':    'Formulaire rapide. Réponse sous 24 heures.',
+  'contact.form.name':    'Votre nom *',
+  'contact.form.email':   'E-mail *',
+  'contact.form.scope':   'Périmètre *',
+  'contact.form.message': 'Décrivez le projet : lieu, taille, calendrier *',
+  'contact.form.send':    'Envoyer par e-mail',
+  'contact.form.sending': 'Envoi...',
+  'contact.form.sent.title': 'Merci. Bien reçu.',
+  'contact.form.sent.body':  'Réponse sous 24 heures.',
+  'contact.form.fallback':   "Ouvre votre client e-mail ou appelez",
 };
 
 const DICTS: Record<Lang, Dict> = { en: EN, fr: FR };

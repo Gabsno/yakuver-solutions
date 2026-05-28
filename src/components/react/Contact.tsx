@@ -91,12 +91,12 @@ export function Contact() {
                 rel="noopener"
                 whileHover={{ paddingLeft: 10 }}
                 transition={springSnappy}
-                className="grid grid-cols-[110px_1fr_auto] gap-4 items-center py-5 border-b border-line-dark group transition-all"
+                className="grid grid-cols-[minmax(80px,auto)_1fr_auto] gap-x-5 sm:gap-x-8 items-center py-5 border-b border-line-dark group transition-all"
               >
-                <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-on-primary/45 inline-flex items-center gap-2">
-                  <r.icon className="w-3 h-3" /> {t(r.typeKey)}
+                <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-on-primary/45 inline-flex items-center gap-2 whitespace-nowrap">
+                  <r.icon className="w-3 h-3 shrink-0" /> {t(r.typeKey)}
                 </span>
-                <span className="font-heading text-[17px] font-semibold text-on-primary group-hover:text-gold-2 transition-colors">
+                <span className="font-heading text-[16px] sm:text-[17px] font-semibold text-on-primary group-hover:text-gold-2 transition-colors truncate">
                   {r.value}
                 </span>
                 <motion.span
