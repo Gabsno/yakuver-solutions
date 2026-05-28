@@ -1,5 +1,5 @@
-import { motion, useInView, useMotionValue, useTransform, animate } from 'motion/react';
-import { useEffect, useRef } from 'react';
+import { motion, animate } from 'motion/react';
+import { useEffect, useState } from 'react';
 import { fadeUp, sectionViewport } from '../../lib/motion-presets';
 
 // =============================================================================
@@ -12,22 +12,21 @@ import { fadeUp, sectionViewport } from '../../lib/motion-presets';
 // =============================================================================
 
 function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-30px' });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v).toString() + suffix);
+  // Parent island uses client:visible so by the time this mounts, it's in
+  // viewport. Animate on mount via animate().onUpdate -> setState; no
+  // MotionValue-as-child rendering, no inner IntersectionObserver.
+  const [display, setDisplay] = useState('0' + suffix);
 
   useEffect(() => {
-    if (!inView) return;
-    const controls = animate(count, to, { duration: 1.4, ease: [0.22, 1, 0.36, 1] });
+    const controls = animate(0, to, {
+      duration: 1.4,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setDisplay(Math.round(v).toString() + suffix),
+    });
     return () => controls.stop();
-  }, [inView, to, count]);
+  }, [to, suffix]);
 
-  return (
-    <motion.span ref={ref} style={{ fontVariantNumeric: 'tabular-nums' }}>
-      {rounded}
-    </motion.span>
-  );
+  return <span style={{ fontVariantNumeric: 'tabular-nums' }}>{display}</span>;
 }
 
 export function Stats() {
