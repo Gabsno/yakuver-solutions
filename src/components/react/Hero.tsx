@@ -52,7 +52,7 @@ export function Hero({ base = '/' }: HeroProps) {
                 <motion.span variants={wordReveal} className="inline-block">{t('hero.title.1')}</motion.span>
               </span>
               <span className="block overflow-hidden">
-                <motion.span variants={wordReveal} className="inline-block text-gold-3">
+                <motion.span variants={wordReveal} className="inline-block text-shimmer-gold">
                   {t('hero.title.2')}
                 </motion.span>
                 <motion.span variants={wordReveal} className="inline-block ml-3">{t('hero.title.3')}</motion.span>

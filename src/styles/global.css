@@ -48,9 +48,22 @@ h1, h2, h3, h4, h5 {
 section[id], div[id] { scroll-margin-top: 110px; }
 @media (min-width: 1024px) { section[id], div[id] { scroll-margin-top: 130px; } }
 
-/* Gradient-text accents removed per impeccable + design-taste-frontend hard ban.
-   Accent words now use Tailwind utility .text-gold / .text-gold-2 / .text-gold-3
-   which resolve to solid colors from tailwind.config.js. */
+/* Gradient-text accents removed sitewide per impeccable + design-taste-frontend
+   hard ban. Heading accents now use solid Tailwind utility colors.
+   ONE deliberate exception: .text-shimmer-gold for the single hero MEPF word,
+   which is the brand's signature value prop. Used exactly once on the site. */
+.text-shimmer-gold {
+  background: linear-gradient(90deg, #8b6914, #d4af37, #f0d896, #d4af37, #8b6914);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-gold 4.5s linear infinite;
+}
+@keyframes shimmer-gold {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
 
 .paper-grid-light {
   background-image:
@@ -73,4 +86,5 @@ section[id], div[id] { scroll-margin-top: 110px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .text-shimmer-gold { animation: none; background-position: 0 0; }
 }
