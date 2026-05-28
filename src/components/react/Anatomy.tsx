@@ -51,17 +51,17 @@ export function Anatomy() {
         >
           <motion.div variants={fadeUp} className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
             <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-            About · 02
+            About
           </motion.div>
           <motion.h2 variants={fadeUp} className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary mb-6">
-            A firm built on <span className="text-gold-gradient">engineering</span>, not on excuses.
+            A firm built on <span className="text-gold">engineering</span>, not on excuses.
           </motion.h2>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[60ch] mb-8">
             Yakuver Solutions LTD is a multidisciplinary firm with a strong focus on
             Architectural and Civil Engineering, delivering well-designed, durable, and
             sustainable built environments. We provide integrated services from planning
-            and construction to MEPF systems — including HVAC, electrical, plumbing, and
-            fire protection — ensuring safety, efficiency and high performance across every project.
+            and construction to MEPF systems - including HVAC, electrical, plumbing, and
+            fire protection - ensuring safety, efficiency and high performance across every project.
           </motion.p>
 
           <div className="grid gap-4">

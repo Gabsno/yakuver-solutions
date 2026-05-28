@@ -17,6 +17,25 @@ html, body {
   font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
+/* Tabular figures on every number-bearing element so columns stop dancing */
+.font-mono,
+table,
+.font-heading {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Balanced headline wrapping - kills orphan words on H1/H2 */
+h1, h2 { text-wrap: balance; }
+p     { text-wrap: pretty; }
+
+/* Subtle gold-tinted shadows replace generic neutral .shadow-*
+   (the underlying class names stay, just the values are warmer) */
+:root {
+  --shadow-soft:  0 6px 18px -8px rgba(120, 90, 40, 0.14);
+  --shadow-med:   0 16px 36px -16px rgba(120, 90, 40, 0.20);
+  --shadow-deep:  0 30px 60px -28px rgba(80, 50, 10, 0.45);
+}
+
 ::selection { background: theme('colors.gold'); color: theme('colors.primary'); }
 
 h1, h2, h3, h4, h5 {
@@ -29,26 +48,9 @@ h1, h2, h3, h4, h5 {
 section[id], div[id] { scroll-margin-top: 110px; }
 @media (min-width: 1024px) { section[id], div[id] { scroll-margin-top: 130px; } }
 
-.text-gold-gradient {
-  background: linear-gradient(135deg, #8b6914 0%, #c8932e 30%, #e6c478 50%, #c8932e 70%, #8b6914 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  background-size: 200% 200%;
-}
-
-.text-gold-shine {
-  background: linear-gradient(90deg, #8b6914, #d4af37, #f0d896, #d4af37, #8b6914);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shine 4.5s linear infinite;
-}
-@keyframes shine {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
+/* Gradient-text accents removed per impeccable + design-taste-frontend hard ban.
+   Accent words now use Tailwind utility .text-gold / .text-gold-2 / .text-gold-3
+   which resolve to solid colors from tailwind.config.js. */
 
 .paper-grid-light {
   background-image:
@@ -71,5 +73,4 @@ section[id], div[id] { scroll-margin-top: 110px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  .text-gold-shine { animation: none; background-position: 0 0; }
 }

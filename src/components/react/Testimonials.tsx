@@ -12,13 +12,13 @@ type Testimonial = {
 };
 
 // =============================================================================
-// Placeholder testimonials — replace `quote`, `name`, `role`, `company` with
+// Placeholder testimonials - replace `quote`, `name`, `role`, `company` with
 // real client feedback. Layout, motion and styling will work as-is.
 // =============================================================================
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "Yakuver took our full MEP scope from drawings to commissioning and didn't miss a single milestone. The level of coordination between their architectural, electrical and HVAC teams meant we never had to chase three separate contractors — they brought one programme and owned the result.",
+      "Yakuver took our full MEP scope from drawings to commissioning and didn't miss a single milestone. The level of coordination between their architectural, electrical and HVAC teams meant we never had to chase three separate contractors - they brought one programme and owned the result.",
     name: 'Client name pending',
     role: 'Project Director',
     company: 'AU Project',
@@ -26,7 +26,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "Bringing in a Ghanaian team for a cross-border chilled-water install was a risk on paper — but the CHU plant was commissioned, witnessed and handed over on programme, and our facility team had full O&M documentation from day one. That's the difference.",
+      "Bringing in a Ghanaian team for a cross-border chilled-water install was a risk on paper - but the CHU plant was commissioned, witnessed and handed over on programme, and our facility team had full O&M documentation from day one. That's the difference.",
     name: 'Client name pending',
     role: 'Facility Engineer',
     company: 'CHU Hospital · Lomé',
@@ -34,7 +34,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "What we appreciated most was the discipline. Daily quality checks, weekly walks, snag list updated in real time — by the time we got to handover there were no surprises. We've already engaged them for the next phase.",
+      "What we appreciated most was the discipline. Daily quality checks, weekly walks, snag list updated in real time - by the time we got to handover there were no surprises. We've already engaged them for the next phase.",
     name: 'Client name pending',
     role: 'Owner',
     company: 'Residential development',
@@ -65,17 +65,17 @@ export function Testimonials() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              In their words · 07
+              In their words
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
               What clients say<br />
-              <span className="text-gold-gradient">about working with us.</span>
+              <span className="text-gold">about working with us.</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">
             Selected feedback from a cross-section of recent projects.
             <span className="block mt-1 text-[13px] font-mono uppercase tracking-[0.12em] text-gold-deep opacity-70">
-              ◆ live quotes coming soon — pending client approval
+              ◆ live quotes coming soon - pending client approval
             </span>
           </motion.p>
         </motion.div>

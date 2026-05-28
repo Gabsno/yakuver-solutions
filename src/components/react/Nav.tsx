@@ -6,14 +6,14 @@ import { springSnappy, springTap } from '../../lib/motion-presets';
 import { useT } from '../../lib/i18n';
 
 // =============================================================================
-// Multi-page Nav — works across the Astro site.
+// Multi-page Nav - works across the Astro site.
 // Active link highlight is derived from window.location.pathname.
 // `base` prop allows the Astro layout to pass in the site's base path so links
 // resolve correctly under /yakuver-solutions/ or a custom domain.
 // =============================================================================
 
 interface NavProps {
-  /** Astro `import.meta.env.BASE_URL` — e.g. "/yakuver-solutions/" or "/" */
+  /** Astro `import.meta.env.BASE_URL` - e.g. "/yakuver-solutions/" or "/" */
   base?: string;
 }
 
@@ -65,7 +65,7 @@ export function Nav({ base = '/' }: NavProps) {
           : 'bg-transparent'
       }`}
     >
-      {/* TOP CONTACT STRIP — auto-collapses on scroll */}
+      {/* TOP CONTACT STRIP - auto-collapses on scroll */}
       <div className={`transition-all duration-500 ${scrolled ? 'max-h-0 opacity-0 overflow-hidden' : 'max-h-20 opacity-100'}`}>
         <div className="max-w-[1480px] mx-auto px-6 lg:px-10 py-3 flex justify-between items-center gap-6 flex-wrap font-mono text-[11.5px] tracking-[0.06em] text-on-primary/70">
           <div className="flex gap-6 items-center flex-wrap">

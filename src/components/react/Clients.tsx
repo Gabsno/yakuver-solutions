@@ -58,16 +58,16 @@ export function Clients() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              Clients · 09
+              Clients
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
               Trusted by institutions,<br />
-              <span className="text-gold-gradient">developers &amp; industry.</span>
+              <span className="text-gold">developers &amp; industry.</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">
             Government, hospitality, manufacturing, education, religious institutions
-            and private developers — a cross-section of Ghana's built environment.
+            and private developers - a cross-section of Ghana's built environment.
           </motion.p>
         </motion.div>
 

@@ -1,6 +1,6 @@
 ---
 // =============================================================================
-// PageHero — compact dark hero banner used by sub-pages (About, Services,
+// PageHero - compact dark hero banner used by sub-pages (About, Services,
 // Projects, Contact). Carries the page title, eyebrow tag, lede paragraph
 // and an optional breadcrumb.
 // =============================================================================
@@ -42,7 +42,7 @@ const { eyebrow, title, accent, lede, crumbs } = Astro.props;
 
     <h1 class="font-heading font-black tracking-[-0.025em] leading-[1.05] text-[clamp(2.4rem,5.5vw,4.6rem)] max-w-[18ch]">
       {title}
-      {accent && <span class="block text-gold-gradient">{accent}</span>}
+      {accent && <span class="block text-gold">{accent}</span>}
     </h1>
 
     {lede && (

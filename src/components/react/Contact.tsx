@@ -13,7 +13,7 @@ const ROWS = [
 
 // =============================================================================
 // To enable a real server-side form:
-//   1. Sign up at https://formspree.io (free tier — 50 submissions/month)
+//   1. Sign up at https://formspree.io (free tier - 50 submissions/month)
 //   2. Create a new form pointed at info@yakuversolutions.com
 //   3. Paste the action URL below (format: https://formspree.io/f/xxxxxxxx)
 // Until then, submissions fall back to a pre-filled mailto draft.
@@ -44,14 +44,14 @@ export function Contact() {
         setSubmitting(false);
       }
     } else {
-      // Mailto fallback — builds a structured email draft
+      // Mailto fallback - builds a structured email draft
       const body =
         `Name: ${name}\n` +
         `Email: ${email}\n` +
         `Scope: ${scope}\n\n` +
         `${message}`;
       window.location.href =
-        `mailto:info@yakuversolutions.com?subject=${encodeURIComponent('Project enquiry — ' + (scope || 'Yakuver Solutions'))}&body=${encodeURIComponent(body)}`;
+        `mailto:info@yakuversolutions.com?subject=${encodeURIComponent('Project enquiry - ' + (scope || 'Yakuver Solutions'))}&body=${encodeURIComponent(body)}`;
     }
   }
 
@@ -64,7 +64,7 @@ export function Contact() {
       />
 
       <div className="relative max-w-[1360px] mx-auto px-6 lg:px-7 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
-        {/* LEFT — Headline + contact rows */}
+        {/* LEFT - Headline + contact rows */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -76,7 +76,7 @@ export function Contact() {
             {t('contact.label')}
           </motion.div>
           <motion.h2 variants={fadeUp} className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] mb-6">
-            {t('contact.title.1')} <span className="text-gold-gradient">{t('contact.title.2')}</span>
+            {t('contact.title.1')} <span className="text-gold">{t('contact.title.2')}</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-on-primary/70 text-[16px] leading-[1.65] max-w-[52ch] mb-10">
             {t('contact.lede')}
@@ -111,7 +111,7 @@ export function Contact() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT — Real form (mailto fallback until Formspree wired) */}
+        {/* RIGHT - Real form (mailto fallback until Formspree wired) */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}

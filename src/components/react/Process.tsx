@@ -15,15 +15,15 @@ const STEPS: Step[] = [
     num: '01',
     icon: ClipboardList,
     title: 'Brief & Site Survey',
-    body: 'We start with a working session — scope, programme, budget — then a physical site survey to capture conditions, constraints and existing services. The outcome is a written brief everyone signs off.',
+    body: 'We start with a working session - scope, programme, budget - then a physical site survey to capture conditions, constraints and existing services. The outcome is a written brief everyone signs off.',
     meta: 'Week 1',
   },
   {
     num: '02',
     icon: Pencil,
     title: 'Design & Coordination',
-    body: 'Integrated drawings — architectural, structural, MEPF — produced in-house and coordinated to eliminate clashes before procurement. Energy modeling, code compliance, and approvals included.',
-    meta: 'Weeks 2–6',
+    body: 'Integrated drawings - architectural, structural, MEPF - produced in-house and coordinated to eliminate clashes before procurement. Energy modeling, code compliance, and approvals included.',
+    meta: 'Weeks 2 - 6',
   },
   {
     num: '03',
@@ -36,7 +36,7 @@ const STEPS: Step[] = [
     num: '04',
     icon: Wrench,
     title: 'Installation',
-    body: 'In-house trades for civil works, MEPF first-fix and second-fix. Daily quality checks, weekly client walks, snag list tracked from day one — not handed over as a surprise at the end.',
+    body: 'In-house trades for civil works, MEPF first-fix and second-fix. Daily quality checks, weekly client walks, snag list tracked from day one - not handed over as a surprise at the end.',
     meta: 'On-programme',
   },
   {
@@ -67,20 +67,19 @@ export function Process() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              How we work · 04
+              How we work
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
               Five steps from<br />
-              <span className="text-gold-gradient">brief to handover.</span>
+              <span className="text-gold">brief to handover.</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">
-            A disciplined sequence that keeps programme and quality under control —
-            with the same team accountable from the first sketch through to commissioning.
+            A disciplined sequence that keeps programme and quality under control - with the same team accountable from the first sketch through to commissioning.
           </motion.p>
         </motion.div>
 
-        {/* Timeline — desktop horizontal, mobile vertical */}
+        {/* Timeline - desktop horizontal, mobile vertical */}
         <motion.div
           initial="hidden"
           whileInView="visible"

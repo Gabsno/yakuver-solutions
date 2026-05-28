@@ -13,8 +13,8 @@ export function WhatsAppFAB() {
 
   const prefill =
     lang === 'fr'
-      ? "Bonjour Yakuver — j'aimerais discuter d'un projet. Pourrions-nous prévoir un appel ?"
-      : "Hi Yakuver — I'd like to discuss a project. Could we set up a call?";
+      ? "Bonjour Yakuver - j'aimerais discuter d'un projet. Pourrions-nous prévoir un appel ?"
+      : "Hi Yakuver - I'd like to discuss a project. Could we set up a call?";
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(prefill)}`;
 
   useEffect(() => {

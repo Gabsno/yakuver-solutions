@@ -6,14 +6,14 @@ type Row = { idx: string; name: string; desc: string; value: string; status: Sta
 
 // FIXED: Rivonia is Ongoing (per client correction 2026-05-23)
 const ROWS: Row[] = [
-  { idx: '01', name: 'AU Project',                       desc: 'Commercial & residential — full architectural, civil and MEPF · since Jan 2024',                value: 'GH₵ 25,000,000', status: 'ongoing'  },
-  { idx: '02', name: 'ESP Heights',                      desc: 'Commercial & residential development — integrated delivery',                                     value: 'GH₵ 15,000,000', status: 'completed' },
-  { idx: '03', name: '4-Villa Housing Project',          desc: 'Residential cluster — architectural, civil & MEP',                                                value: 'GH₵ 4,000,000',  status: 'completed' },
+  { idx: '01', name: 'AU Project',                       desc: 'Commercial & residential - full architectural, civil and MEPF · since Jan 2024',                value: 'GH₵ 25,000,000', status: 'ongoing'  },
+  { idx: '02', name: 'ESP Heights',                      desc: 'Commercial & residential development - integrated delivery',                                     value: 'GH₵ 15,000,000', status: 'completed' },
+  { idx: '03', name: '4-Villa Housing Project',          desc: 'Residential cluster - architectural, civil & MEP',                                                value: 'GH₵ 4,000,000',  status: 'completed' },
   { idx: '04', name: 'Imaani Homes',                     desc: 'Full MEP installation across residential development',                                            value: 'GH₵ 6,000,000',  status: 'ongoing'  },
   { idx: '05', name: 'DGL Complex',                      desc: 'HVAC & fire-fighting installation',                                                               value: 'GH₵ 6,500,000',  status: 'ongoing'  },
   { idx: '06', name: 'Kempinski Apartment',              desc: 'Fire-fighting system for 13-story apartment building · since Nov 2025',                            value: 'GH₵ 1,000,000',  status: 'ongoing'  },
   { idx: '07', name: 'Oak Apartment, Kumasi',            desc: 'Air-conditioning and fire-fighting system installation · since Aug 2025',                          value: 'GH₵ 700,000',    status: 'ongoing'  },
-  { idx: '08', name: '2681 Project · Regus',             desc: 'Design & installation of ventilation, A/C and fire safety — 5-story office, since May 2024',      value: 'GH₵ 2,000,000',  status: 'ongoing'  },
+  { idx: '08', name: '2681 Project · Regus',             desc: 'Design & installation of ventilation, A/C and fire safety - 5-story office, since May 2024',      value: 'GH₵ 2,000,000',  status: 'ongoing'  },
   { idx: '09', name: 'CHU Campus Hospital · Lomé, Togo', desc: 'Two 190 kW chilled-water installations · July → November 2025',                                    value: 'GH₵ 1,500,000',  status: 'ongoing'  },
   { idx: '10', name: 'Rivonia',                          desc: 'Fire-fighting system installation',                                                                value: 'GH₵ 1,820,000',  status: 'ongoing'  },
 ];
@@ -37,11 +37,11 @@ export function Projects() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              Projects · 05
+              Projects
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
               A live portfolio<br />
-              <span className="text-gold-gradient">across Ghana &amp; Togo.</span>
+              <span className="text-gold">across Ghana &amp; Togo.</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">

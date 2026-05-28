@@ -13,7 +13,7 @@ type Member = {
 };
 
 // =============================================================================
-// Placeholder team — replace with real names, roles, bios, photos.
+// Placeholder team - replace with real names, roles, bios, photos.
 // Drop photos in src/assets/team/ and set `photo: teamPhotoNameHere` after import.
 // =============================================================================
 const TEAM: Member[] = [
@@ -66,15 +66,15 @@ export function Team() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              Team · 08
+              Team
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
               The people<br />
-              <span className="text-gold-gradient">behind every project.</span>
+              <span className="text-gold">behind every project.</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">
-            A small, accountable in-house team of engineers and tradespeople — not a brokerage
+            A small, accountable in-house team of engineers and tradespeople - not a brokerage
             of subcontractors. The people on the drawings are the people on site.
             <span className="block mt-1 text-[13px] font-mono uppercase tracking-[0.12em] text-gold-deep opacity-70">
               ◆ headshots & full bios coming soon
@@ -108,7 +108,7 @@ export function Team() {
                 ) : (
                   <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-primary via-primary-2 to-primary-3">
                     <div className="text-center">
-                      <div className="font-heading font-black text-[clamp(3rem,8vw,5rem)] text-gold-gradient leading-none">
+                      <div className="font-heading font-black text-[clamp(3rem,8vw,5rem)] text-gold leading-none">
                         {initials(m.name)}
                       </div>
                       <div className="mt-3 font-mono text-[10px] tracking-[0.2em] uppercase text-on-primary/40">

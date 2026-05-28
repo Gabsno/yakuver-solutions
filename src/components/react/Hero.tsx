@@ -14,7 +14,7 @@ const TAG_KEYS = [
 ];
 
 interface HeroProps {
-  /** Astro base URL — e.g. "/yakuver-solutions/" — so cross-page links resolve */
+  /** Astro base URL - e.g. "/yakuver-solutions/" - so cross-page links resolve */
   base?: string;
 }
 
@@ -33,7 +33,7 @@ export function Hero({ base = '/' }: HeroProps) {
 
       <div className="relative max-w-[1480px] mx-auto px-6 lg:px-10 pt-[200px] pb-24 min-h-[100vh] flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1.15fr] gap-12 lg:gap-16 items-center">
-          {/* LEFT — copy */}
+          {/* LEFT - copy */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -52,7 +52,7 @@ export function Hero({ base = '/' }: HeroProps) {
                 <motion.span variants={wordReveal} className="inline-block">{t('hero.title.1')}</motion.span>
               </span>
               <span className="block overflow-hidden">
-                <motion.span variants={wordReveal} className="inline-block text-gold-shine">
+                <motion.span variants={wordReveal} className="inline-block text-gold-3">
                   {t('hero.title.2')}
                 </motion.span>
                 <motion.span variants={wordReveal} className="inline-block ml-3">{t('hero.title.3')}</motion.span>
@@ -113,7 +113,7 @@ export function Hero({ base = '/' }: HeroProps) {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT — static villa image, bleed-integrated */}
+          {/* RIGHT - static villa image, bleed-integrated */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -129,7 +129,7 @@ export function Hero({ base = '/' }: HeroProps) {
               transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
             />
 
-            {/* The image — masked at edges so it bleeds into the hero bg */}
+            {/* The image - masked at edges so it bleeds into the hero bg */}
             <div
               className="absolute inset-0 overflow-hidden"
               style={{
@@ -141,7 +141,7 @@ export function Hero({ base = '/' }: HeroProps) {
             >
               <motion.img
                 src={villa.src}
-                alt="Yakuver Solutions — modern 3-story residence with stone column accents, wood-paneled feature wall, glass balconies and curved entrance canopy"
+                alt="Yakuver Solutions - modern 3-story residence with stone column accents, wood-paneled feature wall, glass balconies and curved entrance canopy"
                 className="w-full h-full object-cover"
                 initial={{ scale: 1.06 }}
                 animate={{ scale: [1.06, 1.12, 1.06] }}
@@ -168,7 +168,7 @@ export function Hero({ base = '/' }: HeroProps) {
               {t('hero.chip.residential')}
             </motion.div>
 
-            {/* Project sub-tag — top-right */}
+            {/* Project sub-tag - top-right */}
             <motion.div
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
@@ -178,7 +178,7 @@ export function Hero({ base = '/' }: HeroProps) {
               {t('hero.chip.cluster')}
             </motion.div>
 
-            {/* GHC stamp — bottom-left, integrated */}
+            {/* GHC stamp - bottom-left, integrated */}
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -191,7 +191,7 @@ export function Hero({ base = '/' }: HeroProps) {
               <div className="font-mono text-[9px] sm:text-[9.5px] tracking-[0.14em] uppercase mt-1 sm:mt-1.5 opacity-80">{t('hero.stamp.activeportfolio')}</div>
             </motion.div>
 
-            {/* Discipline meta — bottom-right (hidden on mobile to avoid overlap) */}
+            {/* Discipline meta - bottom-right (hidden on mobile to avoid overlap) */}
             <motion.div
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}

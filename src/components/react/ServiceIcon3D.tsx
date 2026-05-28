@@ -5,7 +5,7 @@ export type IconKind =
   | 'hvac' | 'electrical' | 'plumbing' | 'fire';
 
 // =============================================================================
-// 3D-feel SVG service icons — isometric perspective, gradients, depth,
+// 3D-feel SVG service icons - isometric perspective, gradients, depth,
 // multi-layer shadows. Animated rotate-y + scale + glow on hover via motion.
 // =============================================================================
 
@@ -81,7 +81,7 @@ export function ServiceIcon3D({ kind, accent, size = 64 }: Props) {
 }
 
 // =============================================================================
-// Per-kind SVG drawings — isometric building blocks, beveled edges,
+// Per-kind SVG drawings - isometric building blocks, beveled edges,
 // gradient shading to imply depth. No external dependencies.
 // =============================================================================
 
@@ -120,7 +120,7 @@ const ICON_SVG: Record<IconKind, (a: string) => React.ReactElement> = {
           <stop offset="1" stopColor={a} stopOpacity="0.35" />
         </linearGradient>
       </defs>
-      {/* Isometric building stack — 3 cubes */}
+      {/* Isometric building stack - 3 cubes */}
       <g transform="translate(8 6)">
         {/* bottom cube */}
         <polygon points="0,42 24,30 48,42 24,54" fill={`url(#civ-top-${a})`} />

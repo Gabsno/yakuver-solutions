@@ -1,7 +1,7 @@
 import { useEffect, useSyncExternalStore } from 'react';
 
 // =============================================================================
-// Provider-free i18n — works across Astro page navigations and inside any React
+// Provider-free i18n - works across Astro page navigations and inside any React
 // island. State lives in localStorage and broadcasts via a 'storage' event so
 // all islands on the page stay in sync.
 //
@@ -31,7 +31,7 @@ const EN: Dict = {
   'hero.title.3':     'delivered',
   'hero.title.4':     'as one.',
   'hero.lede':
-    'A multidisciplinary engineering and construction firm building durable, well-designed environments across Ghana and West Africa. From foundations to commissioning — architecture, civil, mechanical, electrical, plumbing and fire protection under one disciplined team.',
+    'A multidisciplinary engineering and construction firm building durable, well-designed environments across Ghana and West Africa. From foundations to commissioning - architecture, civil, mechanical, electrical, plumbing and fire protection under one disciplined team.',
   'hero.tag.arch':       'Architecture',
   'hero.tag.civil':      'Civil Engineering',
   'hero.tag.hvac':       'HVAC & R',
@@ -54,12 +54,12 @@ const EN: Dict = {
   // WhatsApp
   'wa.eyebrow':  'Quick chat',
   'wa.title':    'Talk to the Yakuver team',
-  'wa.body':     'Send scope, drawings or a sketch on WhatsApp — we typically reply within an hour during work hours.',
+  'wa.body':     'Send scope, drawings or a sketch on WhatsApp - we typically reply within an hour during work hours.',
   'wa.btn':      'Open WhatsApp →',
 };
 
 const FR: Dict = {
-  // (Sparse — falls back to EN on miss. Filled out properly in a later pass.)
+  // (Sparse - falls back to EN on miss. Filled out properly in a later pass.)
   'nav.home':         'Accueil',
   'nav.about':        'À propos',
   'nav.services':     'Services',

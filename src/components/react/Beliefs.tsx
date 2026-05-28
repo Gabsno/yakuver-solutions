@@ -3,8 +3,8 @@ import { staggerContainer, fadeUp, sectionViewport } from '../../lib/motion-pres
 
 const BELIEFS = [
   { num: '01 / INNOVATION', title: 'Forward-thinking, by default.', body: 'We embrace new technologies and continuously explore better methods, materials and systems to stay ahead in a rapidly evolving construction landscape.' },
-  { num: '02 / PRECISION',  title: 'Every detail matters.', body: 'Our work is defined by accuracy, consistency, and a commitment to delivering high-quality results without compromise — from setting out to snag-list close-out.' },
-  { num: '03 / CLIENT SATISFACTION', title: 'Tailored. Communicated. Delivered.', body: "We prioritise our clients' needs, ensuring clear communication, tailored solutions, and a seamless experience from start to finish — and a building that performs after handover." },
+  { num: '02 / PRECISION',  title: 'Every detail matters.', body: 'Our work is defined by accuracy, consistency, and a commitment to delivering high-quality results without compromise - from setting out to snag-list close-out.' },
+  { num: '03 / CLIENT SATISFACTION', title: 'Tailored. Communicated. Delivered.', body: "We prioritise our clients' needs, ensuring clear communication, tailored solutions, and a seamless experience from start to finish - and a building that performs after handover." },
 ];
 
 export function Beliefs() {
@@ -23,11 +23,11 @@ export function Beliefs() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-on-primary/55 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              Core Beliefs · 03
+              Core Beliefs
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-on-primary">
               We don't define our beliefs.<br />
-              <span className="text-gold-gradient">We live them.</span>
+              <span className="text-gold">We live them.</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-on-primary/65 text-[16px] leading-[1.65] max-w-[58ch]">

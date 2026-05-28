@@ -1,6 +1,6 @@
 ---
 // =============================================================================
-// BaseHead — shared <head> across every page.
+// BaseHead - shared <head> across every page.
 // Pass per-page title / description / image / canonical via props.
 // =============================================================================
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   description: string;
   /** Path under site root that this page's OG card should use. Defaults to /og-image.png */
   image?: string;
-  /** Canonical path, e.g. '/about/' — defaults to current URL */
+  /** Canonical path, e.g. '/about/' - defaults to current URL */
   canonical?: string;
 }
 const { title, description, image = '/og-image.png', canonical } = Astro.props;

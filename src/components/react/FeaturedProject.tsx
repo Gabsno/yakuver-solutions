@@ -38,22 +38,21 @@ export function FeaturedProject() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-gold-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-60" />
-              Featured project · 06
+              Featured project
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-on-primary">
               Cross-border<br />
-              <span className="text-gold-gradient">chilled-water plant.</span>
+              <span className="text-gold">chilled-water plant.</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-on-primary/70 text-[16px] leading-[1.65] max-w-[58ch]">
-            A 380 kW chilled-water installation for the CHU Campus Hospital in Lomé, Togo —
-            two parallel chillers, pumps, headers and BMS controls, delivered through a
+            A 380 kW chilled-water installation for the CHU Campus Hospital in Lomé, Togo - two parallel chillers, pumps, headers and BMS controls, delivered through a
             cross-border programme that finished on schedule.
           </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-14 items-start">
-          {/* LEFT — Image collage */}
+          {/* LEFT - Image collage */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -67,7 +66,7 @@ export function FeaturedProject() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0 rounded-xl+ overflow-hidden border border-line-dark shadow-deep"
             >
-              <img src={vrf.src} alt="CHU Hospital — rooftop chiller installation" className="w-full h-full object-cover" />
+              <img src={vrf.src} alt="CHU Hospital - rooftop chiller installation" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent pointer-events-none" />
             </motion.div>
 
@@ -77,7 +76,7 @@ export function FeaturedProject() {
               transition={springSnappy}
               className="absolute -bottom-6 -right-4 w-[55%] aspect-[4/5] rounded-lg+ overflow-hidden border-4 border-primary shadow-deep"
             >
-              <img src={vrfArray.src} alt="CHU Hospital — VRF array detail" className="w-full h-full object-cover" />
+              <img src={vrfArray.src} alt="CHU Hospital - VRF array detail" className="w-full h-full object-cover" />
             </motion.div>
 
             <motion.div
@@ -86,7 +85,7 @@ export function FeaturedProject() {
               transition={springSnappy}
               className="absolute -top-6 -left-4 w-[40%] aspect-square rounded-lg+ overflow-hidden border-4 border-primary shadow-deep"
             >
-              <img src={brazing.src} alt="CHU Hospital — refrigerant brazing" className="w-full h-full object-cover" />
+              <img src={brazing.src} alt="CHU Hospital - refrigerant brazing" className="w-full h-full object-cover" />
             </motion.div>
 
             {/* Floating value chip */}
@@ -100,7 +99,7 @@ export function FeaturedProject() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT — Content */}
+          {/* RIGHT - Content */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -132,7 +131,7 @@ export function FeaturedProject() {
               className="text-on-primary/70 text-[15.5px] leading-[1.7] mb-7"
             >
               An operating hospital in a neighbouring country needed a complete chilled-water
-              upgrade — two new 190 kW units installed in parallel, with no disruption to
+              upgrade - two new 190 kW units installed in parallel, with no disruption to
               existing wards and rigid programme constraints driven by clinical operations.
             </motion.p>
 
@@ -146,7 +145,7 @@ export function FeaturedProject() {
               {[
                 'In-house design and full BIM coordination with Lomé site team',
                 'Phased commissioning: chiller 1 brought online while chiller 2 was being installed',
-                'Cross-border logistics — equipment landed at Lomé port, on-site stores managed',
+                'Cross-border logistics - equipment landed at Lomé port, on-site stores managed',
                 'Live BMS integration with the hospital\'s building management system',
                 'Witnessed commissioning with hospital engineering team',
               ].map((item) => (

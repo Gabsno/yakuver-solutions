@@ -85,7 +85,7 @@ export function Footer() {
         </motion.div>
 
         <div className="pt-6 flex flex-wrap justify-between items-center gap-4 font-mono text-[11px] tracking-[0.14em] text-on-primary/45">
-          <div>© {new Date().getFullYear()} Yakuver Solutions LTD — {t('footer.rights')}</div>
+          <div>© {new Date().getFullYear()} Yakuver Solutions LTD - {t('footer.rights')}</div>
           <div>{t('footer.tagline.short')}</div>
         </div>
       </div>

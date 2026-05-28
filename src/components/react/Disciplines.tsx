@@ -11,10 +11,10 @@ const ARCH_CIVIL: Service[] = [
 ];
 
 const MEPF: Service[] = [
-  { kind: 'hvac',       name: 'HVAC & R Systems',   desc: 'Heating, ventilation, air-conditioning and refrigeration — splits, ducted, VRF, chilled water and commercial refrigeration, sized and commissioned for tropical performance.' },
+  { kind: 'hvac',       name: 'HVAC & R Systems',   desc: 'Heating, ventilation, air-conditioning and refrigeration - splits, ducted, VRF, chilled water and commercial refrigeration, sized and commissioned for tropical performance.' },
   { kind: 'electrical', name: 'Electrical Systems', desc: 'Distribution boards, containment, lighting, power, LV/MV, generator integration and standby systems.' },
   { kind: 'plumbing',   name: 'Plumbing & Drainage',desc: 'Hot & cold water, soil & vent, pumped systems, fixture installation, rainwater and grey-water capture.' },
-  { kind: 'fire',       name: 'Fire Protection',    desc: 'Fire detection, alarm, hose reels, hydrants, sprinklers and suppression — designed to NFPA / local fire service requirements.' },
+  { kind: 'fire',       name: 'Fire Protection',    desc: 'Fire detection, alarm, hose reels, hydrants, sprinklers and suppression - designed to NFPA / local fire service requirements.' },
 ];
 
 function Pillar({
@@ -87,16 +87,16 @@ export function Disciplines() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              Capabilities · 01
+              Capabilities
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
               Two disciplines.<br />
-              <span className="text-gold-gradient">One accountable team.</span>
+              <span className="text-gold">One accountable team.</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">
             Most projects fail in the seams between consultants, contractors and trades.
-            Yakuver closes that gap — architecture, civil and full MEPF delivered by an
+            Yakuver closes that gap - architecture, civil and full MEPF delivered by an
             in-house team, coordinated from concept through commissioning.
           </motion.p>
         </motion.div>
@@ -111,14 +111,14 @@ export function Disciplines() {
           <Pillar
             num="01 / DESIGN & BUILD"
             title="Architectural & Civil Engineering"
-            lede="From conceptual planning to site development — integrated architectural design and structural engineering with aesthetic, structural and regulatory rigour."
+            lede="From conceptual planning to site development - integrated architectural design and structural engineering with aesthetic, structural and regulatory rigour."
             services={ARCH_CIVIL}
             accent="#c8932e"
           />
           <Pillar
             num="02 / SYSTEMS"
             title="MEPF Engineering & Installation"
-            lede="End-to-end Mechanical, Electrical, Plumbing and Fire systems — designed for energy efficiency, code compliance and long-term reliability in West African conditions."
+            lede="End-to-end Mechanical, Electrical, Plumbing and Fire systems - designed for energy efficiency, code compliance and long-term reliability in West African conditions."
             services={MEPF}
             accent="#0891b2"
             delay={0.1}

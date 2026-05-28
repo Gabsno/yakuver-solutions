@@ -1,5 +1,5 @@
 // =============================================================================
-// Framer Motion presets — shared across the site for consistent rhythm.
+// Framer Motion presets - shared across the site for consistent rhythm.
 // Springs (tuned per stiffness/damping, not duration) and viewport defaults.
 // =============================================================================
 import type { Variants, Transition } from 'motion/react';
