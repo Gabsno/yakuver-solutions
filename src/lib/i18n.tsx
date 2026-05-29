@@ -82,7 +82,7 @@ const EN: Dict = {
 };
 
 const FR: Dict = {
-  // (Sparse - falls back to EN on miss. Filled out properly in a later pass.)
+  // ---- Nav ----
   'nav.home':         'Accueil',
   'nav.about':        'À propos',
   'nav.services':     'Services',
@@ -90,6 +90,40 @@ const FR: Dict = {
   'nav.contact':      'Contact',
   'nav.cta':          'Démarrer un projet',
   'nav.availability': 'Projets ouverts T2 / T3 2026',
+  'nav.locations':    'Accra · Kumasi · Lomé',
+
+  // ---- Hero ----
+  'hero.eyebrow':     'Yakuver Solutions LTD · Basée au Ghana',
+  'hero.title.1':     'Architecture, Génie civil &',
+  'hero.title.2':     'MEPF',
+  'hero.title.3':     'livrés',
+  'hero.title.4':     "comme un seul.",
+  'hero.lede':
+    "Un cabinet multidisciplinaire d'ingénierie et de construction qui bâtit des environnements durables et bien conçus à travers le Ghana et l'Afrique de l'Ouest. Des fondations à la mise en service: architecture, génie civil, mécanique, électricité, plomberie et protection incendie au sein d'une seule équipe disciplinée.",
+  'hero.tag.arch':       'Architecture',
+  'hero.tag.civil':      'Génie civil',
+  'hero.tag.hvac':       'CVC & R',
+  'hero.tag.electrical': 'Électricité',
+  'hero.tag.plumbing':   'Plomberie',
+  'hero.tag.fire':       'Protection incendie',
+  'hero.cta.primary':   'Demander un devis',
+  'hero.cta.secondary': 'Voir nos projets',
+  'hero.meta.live':     'projets en cours',
+  'hero.meta.portfolio':'portefeuille actif',
+  'hero.meta.footprint':'présence',
+  'hero.chip.residential':     'Résidentiel · Villa moderne',
+  'hero.chip.cluster':         'Lotissement 4 villas · Accra',
+  'hero.stamp.in':             'EN COURS',
+  'hero.stamp.activeportfolio':'portefeuille actif',
+  'hero.disciplineMeta':       'ARCHITECTURE · GÉNIE CIVIL · MEPF',
+  'hero.disciplineLabel':      'Les six disciplines',
+  'hero.disciplineSub':        'une seule équipe responsable',
+
+  // ---- WhatsApp ----
+  'wa.eyebrow':  'Chat rapide',
+  'wa.title':    "Parlez à l'équipe Yakuver",
+  'wa.body':     'Envoyez périmètre, plans ou croquis sur WhatsApp. Réponse généralement sous une heure en journée.',
+  'wa.btn':      'Ouvrir WhatsApp →',
 
   // Contact page (FR)
   'contact.label':        'Contact',
