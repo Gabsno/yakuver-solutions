@@ -1,33 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Error404 } from '../components/react/Error404';
 const base = import.meta.env.BASE_URL;
-const b = base.endsWith('/') ? base : base + '/';
 ---
 
 <BaseLayout
   title="404 - Lost on site · Yakuver Solutions LTD"
   description="Page not found. Return to the Yakuver Solutions homepage or get in touch with the team."
 >
-  <section class="bg-primary text-on-primary min-h-[80vh] grid place-items-center pt-[180px] pb-20 relative overflow-hidden">
-    <div class="absolute inset-0 paper-grid-dark opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"></div>
-    <div class="relative max-w-[640px] mx-auto px-6 lg:px-10 text-center">
-      <span class="inline-flex items-center gap-2 px-3.5 py-1.5 border border-red-500/30 bg-red-500/10 rounded-full font-mono text-[11px] tracking-[0.18em] uppercase text-red-300 mb-7">
-        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
-        Error 404 · Not found
-      </span>
-      <h1 class="font-heading font-black text-[clamp(5rem,18vw,11rem)] leading-[0.85] tracking-[-0.05em] text-gold mb-3">404</h1>
-      <h2 class="font-heading text-[clamp(1.6rem,3.5vw,2.6rem)] mb-5">Lost on site.</h2>
-      <p class="text-on-primary/65 text-[1.05rem] leading-[1.65] mb-9 max-w-[52ch] mx-auto">
-        That page isn't in our drawings. Head back to the homepage or drop us a line and we'll point you the right way.
-      </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href={b} class="inline-flex items-center gap-2 px-7 py-4 rounded-md+ bg-gold-gradient text-primary font-heading font-bold text-[14.5px] shadow-gold hover:-translate-y-0.5 transition-transform">
-          Take me home →
-        </a>
-        <a href="mailto:info@yakuversolutions.com?subject=Project%20enquiry" class="inline-flex items-center gap-2 px-7 py-4 rounded-md+ border border-on-primary/25 text-on-primary font-heading font-semibold text-[14.5px] hover:bg-on-primary hover:text-primary transition-colors">
-          Email the team
-        </a>
-      </div>
-    </div>
-  </section>
+  <Error404 base={base} client:load />
 </BaseLayout>

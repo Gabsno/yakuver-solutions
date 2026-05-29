@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero   from '../../components/PageHero.astro';
+import { PageHero } from '../../components/react/PageHero';
 import { Gallery } from '../../components/react/Gallery';
 import { PROJECTS, CASE_STUDIES } from '../../lib/projects';
 
@@ -21,14 +21,12 @@ const resolveImg = (file: string) =>
   description="A live portfolio of architecture, civil and MEPF projects across Ghana and Togo - commercial, residential, healthcare and institutional builds totalling over GH₵ 60M in active scope."
 >
   <PageHero
-    eyebrow="Projects"
-    title="A live portfolio"
-    accent="across Ghana & Togo."
-    lede="Commercial complexes, hospitals, residential apartments and institutional buildings. A representative selection of work in commission or recently delivered."
-    crumbs={[
-      { label: 'Home',     href: b },
-      { label: 'Projects', href: b + 'projects/' },
-    ]}
+    eyebrowKey="page.projects.eyebrow"
+    titleKey="page.projects.title"
+    accentKey="page.projects.accent"
+    ledeKey="page.projects.lede"
+    crumbs={[{labelKey:"crumb.home",href:b},{labelKey:"crumb.projects",href:b+"projects/"}]}
+    client:load
   />
 
   <!-- Featured case studies - cards that link to /projects/[slug] -->

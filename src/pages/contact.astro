@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero   from '../components/PageHero.astro';
+import { PageHero } from '../components/react/PageHero';
 import { Contact } from '../components/react/Contact';
+import { ContactOffices } from '../components/react/ContactOffices';
 
 const base = import.meta.env.BASE_URL;
 const b = base.endsWith('/') ? base : base + '/';
@@ -12,44 +13,14 @@ const b = base.endsWith('/') ? base : base + '/';
   description="Talk to the Yakuver team about your project. Send scope, drawings or a sketch and we'll respond within 24 hours. Accra · Kumasi · Lomé."
 >
   <PageHero
-    eyebrow="Contact"
-    title="Let's talk about"
-    accent="your project."
-    lede="Whether it's a 4-villa cluster, a 13-story tower or a chilled-water hospital retrofit - send the scope, drawings or sketch and we'll come back within 24 hours with a route forward."
-    crumbs={[
-      { label: 'Home', href: b },
-      { label: 'Contact', href: b + 'contact/' },
-    ]}
+    eyebrowKey="page.contact.eyebrow"
+    titleKey="page.contact.title"
+    accentKey="page.contact.accent"
+    ledeKey="page.contact.lede"
+    crumbs={[{labelKey:"crumb.home",href:b},{labelKey:"crumb.contact",href:b+"contact/"}]}
+    client:load
   />
 
   <Contact client:visible />
-
-  <!-- Offices strip -->
-  <section class="py-16 lg:py-20 bg-paper border-t border-line">
-    <div class="max-w-[1480px] mx-auto px-6 lg:px-10">
-      <div class="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
-        <span class="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50"></span>
-        Where we work
-      </div>
-      <h2 class="font-heading font-black text-[clamp(1.8rem,3.6vw,2.6rem)] text-primary leading-[1.1] mb-10">
-        Three cities. <span class="text-gold">One responsive team.</span>
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {[
-          { city: 'Accra',   country: 'Ghana - HQ',     note: 'Engineering, project management, principal team' },
-          { city: 'Kumasi',  country: 'Ghana',          note: 'Active site presence - Oak Apartment + sister projects' },
-          { city: 'Lomé',    country: 'Togo',           note: 'Cross-border delivery - CHU Hospital chilled-water plant' },
-        ].map((o) => (
-          <div class="bg-white border border-line rounded-lg+ p-7 shadow-soft hover:shadow-medium hover:border-gold/30 transition-all">
-            <div class="font-mono text-[10.5px] tracking-[0.18em] uppercase text-gold-deep font-semibold mb-3">
-              {o.country}
-            </div>
-            <h3 class="font-heading font-black text-[1.8rem] text-primary leading-none mb-3">{o.city}</h3>
-            <p class="text-secondary text-[14.5px] leading-[1.6]">{o.note}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <ContactOffices client:visible />
 </BaseLayout>

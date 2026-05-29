@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { staggerFast, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
+import { useT } from '../../lib/i18n';
 
 import presidency from '../../assets/clients/presidency-ghana.png';
 import kasapreko from '../../assets/clients/kasapreko.png';
@@ -40,6 +41,7 @@ const CLIENTS = [
 ];
 
 export function Clients() {
+  const { t } = useT();
   return (
     <section id="clients" className="py-24 lg:py-28 bg-paper relative overflow-hidden">
       <div
@@ -58,16 +60,15 @@ export function Clients() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              Clients
+              {t('clients.eyebrow')}
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
-              Trusted by institutions,<br />
-              <span className="text-gold">developers &amp; industry.</span>
+              {t('clients.title.1')}<br />
+              <span className="text-gold">{t('clients.title.2')}</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">
-            Government, hospitality, manufacturing, education, religious institutions
-            and private developers - a cross-section of Ghana's built environment.
+            {t('clients.lede')}
           </motion.p>
         </motion.div>
 
@@ -125,8 +126,8 @@ export function Clients() {
             className="group relative h-[160px] lg:h-[185px] rounded-lg+ bg-gold-gradient text-primary shadow-gold grid place-items-center p-5 cursor-default overflow-hidden"
           >
             <div className="text-center">
-              <div className="font-heading font-black text-[1.55rem] leading-none mb-1.5">+ many</div>
-              <div className="font-mono text-[10.5px] tracking-[0.18em] uppercase font-semibold">more clients</div>
+              <div className="font-heading font-black text-[1.55rem] leading-none mb-1.5">{t('clients.more')}</div>
+              <div className="font-mono text-[10.5px] tracking-[0.18em] uppercase font-semibold">{t('clients.more.lbl')}</div>
             </div>
           </motion.div>
         </motion.div>
@@ -138,7 +139,7 @@ export function Clients() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="text-center mt-10 font-mono text-[12px] tracking-[0.16em] uppercase text-secondary-2"
         >
-          ◆ click any logo to visit the client's website ◆
+          ◆ {t('clients.hint')} ◆
         </motion.p>
       </div>
     </section>

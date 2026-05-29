@@ -1,13 +1,15 @@
 import { motion } from 'motion/react';
 import { staggerContainer, fadeUp, sectionViewport } from '../../lib/motion-presets';
+import { useT } from '../../lib/i18n';
 
 const BELIEFS = [
-  { num: '01 / INNOVATION', title: 'Forward-thinking, by default.', body: 'We embrace new technologies and continuously explore better methods, materials and systems to stay ahead in a rapidly evolving construction landscape.' },
-  { num: '02 / PRECISION',  title: 'Every detail matters.', body: 'Our work is defined by accuracy, consistency, and a commitment to delivering high-quality results without compromise - from setting out to snag-list close-out.' },
-  { num: '03 / CLIENT SATISFACTION', title: 'Tailored. Communicated. Delivered.', body: "We prioritise our clients' needs, ensuring clear communication, tailored solutions, and a seamless experience from start to finish - and a building that performs after handover." },
+  { numKey: 'beliefs.1.num', titleKey: 'beliefs.1.title', bodyKey: 'beliefs.1.body' },
+  { numKey: 'beliefs.2.num', titleKey: 'beliefs.2.title', bodyKey: 'beliefs.2.body' },
+  { numKey: 'beliefs.3.num', titleKey: 'beliefs.3.title', bodyKey: 'beliefs.3.body' },
 ];
 
 export function Beliefs() {
+  const { t } = useT();
   return (
     <section className="relative py-24 lg:py-28 bg-primary text-on-primary overflow-hidden">
       <div className="absolute inset-0 paper-grid-dark opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
@@ -23,16 +25,15 @@ export function Beliefs() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-on-primary/55 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              Core Beliefs
+              {t('beliefs.eyebrow')}
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-on-primary">
-              We don't define our beliefs.<br />
-              <span className="text-gold">We live them.</span>
+              {t('beliefs.title.1')}<br />
+              <span className="text-gold">{t('beliefs.title.2')}</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-on-primary/65 text-[16px] leading-[1.65] max-w-[58ch]">
-            Three principles govern every drawing we issue, every fitting we install
-            and every conversation with a client. They are non-negotiable.
+            {t('beliefs.lede')}
           </motion.p>
         </motion.div>
 
@@ -45,16 +46,16 @@ export function Beliefs() {
         >
           {BELIEFS.map((b, i) => (
             <motion.div
-              key={b.title}
+              key={b.numKey}
               variants={fadeUp}
               whileHover={{ backgroundColor: 'rgba(245,241,232,0.04)' }}
               className={`p-10 lg:p-12 ${i > 0 ? 'lg:border-l border-line-dark' : ''} ${
                 i > 0 ? 'border-t lg:border-t-0 border-line-dark' : ''
               } transition-colors`}
             >
-              <div className="font-mono text-[11px] tracking-[0.18em] text-gold-2 mb-5">{b.num}</div>
-              <h4 className="font-heading font-black text-[1.55rem] mb-4 text-on-primary leading-[1.15]">{b.title}</h4>
-              <p className="text-on-primary/65 text-[14.5px] leading-[1.7]">{b.body}</p>
+              <div className="font-mono text-[11px] tracking-[0.18em] text-gold-2 mb-5">{t(b.numKey)}</div>
+              <h4 className="font-heading font-black text-[1.55rem] mb-4 text-on-primary leading-[1.15]">{t(b.titleKey)}</h4>
+              <p className="text-on-primary/65 text-[14.5px] leading-[1.7]">{t(b.bodyKey)}</p>
             </motion.div>
           ))}
         </motion.div>

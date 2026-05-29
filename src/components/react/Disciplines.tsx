@@ -1,27 +1,30 @@
 import { motion } from 'motion/react';
 import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
 import { ServiceIcon3D, type IconKind } from './ServiceIcon3D';
+import { useT } from '../../lib/i18n';
 
-type Service = { kind: IconKind; name: string; desc: string };
+type Service = { kind: IconKind; nameKey: string; descKey: string };
 
 const ARCH_CIVIL: Service[] = [
-  { kind: 'architecture', name: 'Architectural Consultancy', desc: 'Conceptual design, planning approvals, BIM-coordinated drawings and material specification.' },
-  { kind: 'civil',        name: 'Civil & Structural Works',  desc: 'Foundations, RC frame, retaining structures, drainage and site infrastructure to local codes.' },
-  { kind: 'pm',           name: 'Project Management',        desc: 'Programme, cost and quality control across the full delivery lifecycle, in-house QS reporting.' },
+  { kind: 'architecture', nameKey: 'disc.svc.arch',  descKey: 'disc.svc.arch.d' },
+  { kind: 'civil',        nameKey: 'disc.svc.civil', descKey: 'disc.svc.civil.d' },
+  { kind: 'pm',           nameKey: 'disc.svc.pm',    descKey: 'disc.svc.pm.d' },
 ];
 
 const MEPF: Service[] = [
-  { kind: 'hvac',       name: 'HVAC & R Systems',   desc: 'Heating, ventilation, air-conditioning and refrigeration - splits, ducted, VRF, chilled water and commercial refrigeration, sized and commissioned for tropical performance.' },
-  { kind: 'electrical', name: 'Electrical Systems', desc: 'Distribution boards, containment, lighting, power, LV/MV, generator integration and standby systems.' },
-  { kind: 'plumbing',   name: 'Plumbing & Drainage',desc: 'Hot & cold water, soil & vent, pumped systems, fixture installation, rainwater and grey-water capture.' },
-  { kind: 'fire',       name: 'Fire Protection',    desc: 'Fire detection, alarm, hose reels, hydrants, sprinklers and suppression - designed to NFPA / local fire service requirements.' },
+  { kind: 'hvac',       nameKey: 'disc.svc.hvac',  descKey: 'disc.svc.hvac.d' },
+  { kind: 'electrical', nameKey: 'disc.svc.elec',  descKey: 'disc.svc.elec.d' },
+  { kind: 'plumbing',   nameKey: 'disc.svc.plumb', descKey: 'disc.svc.plumb.d' },
+  { kind: 'fire',       nameKey: 'disc.svc.fire',  descKey: 'disc.svc.fire.d' },
 ];
 
 function Pillar({
-  num, title, lede, services, accent, delay = 0,
+  numKey, titleKey, ledeKey, services, accent, delay = 0,
 }: {
-  num: string; title: string; lede: string; services: Service[]; accent: string; delay?: number;
+  numKey: string; titleKey: string; ledeKey: string;
+  services: Service[]; accent: string; delay?: number;
 }) {
+  const { t } = useT();
   return (
     <motion.div
       variants={fadeUp}
@@ -38,13 +41,13 @@ function Pillar({
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       />
       <div className="font-mono text-[11px] tracking-[0.2em] mb-5" style={{ color: accent }}>
-        {num}
+        {t(numKey)}
       </div>
       <h3 className="font-heading font-bold text-[clamp(1.5rem,2.4vw,2.1rem)] mb-3 text-on-primary">
-        {title}
+        {t(titleKey)}
       </h3>
       <p className="text-on-primary/70 text-[15px] leading-[1.6] mb-8 pb-7 border-b border-line-dark">
-        {lede}
+        {t(ledeKey)}
       </p>
       <motion.div
         variants={staggerContainer}
@@ -55,7 +58,7 @@ function Pillar({
       >
         {services.map((s) => (
           <motion.div
-            key={s.name}
+            key={s.nameKey}
             variants={fadeUp}
             whileHover={{ x: 4 }}
             transition={springSnappy}
@@ -63,8 +66,12 @@ function Pillar({
           >
             <ServiceIcon3D kind={s.kind} accent={accent} size={64} />
             <div className="pt-2">
-              <div className="font-heading font-bold text-[15.5px] text-on-primary mb-1.5 group-hover:text-gold-3 transition-colors">{s.name}</div>
-              <div className="text-[13.5px] text-on-primary/60 leading-[1.6]">{s.desc}</div>
+              <div className="font-heading font-bold text-[15.5px] text-on-primary mb-1.5 group-hover:text-gold-3 transition-colors">
+                {t(s.nameKey)}
+              </div>
+              <div className="text-[13.5px] text-on-primary/60 leading-[1.6]">
+                {t(s.descKey)}
+              </div>
             </div>
           </motion.div>
         ))}
@@ -74,6 +81,7 @@ function Pillar({
 }
 
 export function Disciplines() {
+  const { t } = useT();
   return (
     <section id="capabilities" className="py-24 lg:py-28 bg-background">
       <div className="max-w-[1360px] mx-auto px-6 lg:px-7">
@@ -87,17 +95,15 @@ export function Disciplines() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              Capabilities
+              {t('disc.eyebrow')}
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
-              Two disciplines.<br />
-              <span className="text-gold">One accountable team.</span>
+              {t('disc.title.1')}<br />
+              <span className="text-gold">{t('disc.title.2')}</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">
-            Most projects fail in the seams between consultants, contractors and trades.
-            Yakuver closes that gap - architecture, civil and full MEPF delivered by an
-            in-house team, coordinated from concept through commissioning.
+            {t('disc.lede')}
           </motion.p>
         </motion.div>
 
@@ -109,16 +115,16 @@ export function Disciplines() {
           className="grid grid-cols-1 lg:grid-cols-2 gap-6"
         >
           <Pillar
-            num="01 / DESIGN & BUILD"
-            title="Architectural & Civil Engineering"
-            lede="From conceptual planning to site development - integrated architectural design and structural engineering with aesthetic, structural and regulatory rigour."
+            numKey="disc.pillar.1.num"
+            titleKey="disc.pillar.1.title"
+            ledeKey="disc.pillar.1.lede"
             services={ARCH_CIVIL}
             accent="#c8932e"
           />
           <Pillar
-            num="02 / SYSTEMS"
-            title="MEPF Engineering & Installation"
-            lede="End-to-end Mechanical, Electrical, Plumbing and Fire systems - designed for energy efficiency, code compliance and long-term reliability in West African conditions."
+            numKey="disc.pillar.2.num"
+            titleKey="disc.pillar.2.title"
+            ledeKey="disc.pillar.2.lede"
             services={MEPF}
             accent="#0891b2"
             delay={0.1}

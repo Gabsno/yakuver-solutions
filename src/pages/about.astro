@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero    from '../components/PageHero.astro';
+import { PageHero } from '../components/react/PageHero';
 import { Anatomy } from '../components/react/Anatomy';
 import { Beliefs } from '../components/react/Beliefs';
 import { Process } from '../components/react/Process';
@@ -15,17 +15,15 @@ const b = base.endsWith('/') ? base : base + '/';
   description="Yakuver Solutions LTD is a multidisciplinary firm with a strong focus on Architectural and Civil Engineering - delivering integrated services from planning and construction to MEPF systems across Ghana and West Africa."
 >
   <PageHero
-    eyebrow="About"
-    title="A firm built on engineering,"
-    accent="not on excuses."
-    lede="Yakuver Solutions LTD is a multidisciplinary firm with a strong focus on Architectural and Civil Engineering, delivering well-designed, durable and sustainable built environments. We provide integrated services from planning and construction to MEPF systems - including HVAC, electrical, plumbing and fire protection."
-    crumbs={[
-      { label: 'Home', href: b },
-      { label: 'About', href: b + 'about/' },
-    ]}
+    eyebrowKey="page.about.eyebrow"
+    titleKey="page.about.title"
+    accentKey="page.about.accent"
+    ledeKey="page.about.lede"
+    crumbs={[{labelKey:"crumb.home",href:b},{labelKey:"crumb.about",href:b+"about/"}]}
+    client:load
   />
 
-  <Anatomy client:visible />
+  <Anatomy base={base} client:visible />
   <Beliefs client:visible />
   <Process client:visible />
   <Team    client:visible />

@@ -1,19 +1,14 @@
 ---
-// =============================================================================
-// Home (/) - curated entry point. Drives traffic into deeper pages.
-//   Hero · Marquee · Stats · Disciplines (preview) · Featured project ·
-//   Clients (preview) · Closing CTA
-// =============================================================================
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Hero }          from '../components/react/Hero';
-import { Marquee }       from '../components/react/Marquee';
-import { Stats }         from '../components/react/Stats';
-import { Disciplines }   from '../components/react/Disciplines';
+import { Hero }            from '../components/react/Hero';
+import { Marquee }         from '../components/react/Marquee';
+import { Stats }           from '../components/react/Stats';
+import { Disciplines }     from '../components/react/Disciplines';
 import { FeaturedProject } from '../components/react/FeaturedProject';
-import { Clients }       from '../components/react/Clients';
+import { Clients }         from '../components/react/Clients';
+import { ClosingCTA }      from '../components/react/ClosingCTA';
 
 const base = import.meta.env.BASE_URL;
-const b = base.endsWith('/') ? base : base + '/';
 ---
 
 <BaseLayout
@@ -23,43 +18,9 @@ const b = base.endsWith('/') ? base : base + '/';
 >
   <Hero base={base} client:load />
   <Marquee client:visible />
-  <Stats client:visible />
+  <Stats base={base} client:visible />
   <Disciplines client:visible />
-  <FeaturedProject client:visible />
+  <FeaturedProject base={base} client:visible />
   <Clients client:visible />
-
-  <!-- Closing CTA strip - drives to /contact -->
-  <section class="bg-primary text-on-primary py-20 lg:py-24 border-t border-line-dark relative overflow-hidden">
-    <div class="absolute inset-0 paper-grid-dark opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"></div>
-    <div class="relative max-w-[1480px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
-      <div>
-        <div class="font-mono text-[11px] tracking-[0.18em] uppercase text-gold-2 mb-4">
-          <span class="inline-block w-7 h-px bg-current mr-3 align-middle opacity-60"></span>
-          Ready to start?
-        </div>
-        <h2 class="font-heading font-black text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-[-0.025em]">
-          One brief in.<br />
-          <span class="text-gold">One responsible team out.</span>
-        </h2>
-        <p class="text-on-primary/70 text-[16px] leading-[1.65] max-w-[58ch] mt-5">
-          Send your scope, drawings or a sketch. We come back within 24 hours
-          with a route forward - engineered, costed and programme-ready.
-        </p>
-      </div>
-      <div class="flex flex-wrap gap-3 lg:justify-end">
-        <a
-          href={b + 'contact/'}
-          class="inline-flex items-center gap-2.5 px-7 py-4 rounded-md+ bg-gold-gradient text-primary font-heading font-bold text-[15px] shadow-gold hover:-translate-y-0.5 transition-transform"
-        >
-          Request a quotation →
-        </a>
-        <a
-          href={b + 'projects/'}
-          class="inline-flex items-center gap-2.5 px-7 py-4 rounded-md+ border border-on-primary/25 text-on-primary font-heading font-semibold text-[15px] hover:bg-on-primary hover:text-primary transition-colors"
-        >
-          See our projects
-        </a>
-      </div>
-    </div>
-  </section>
+  <ClosingCTA base={base} client:visible />
 </BaseLayout>

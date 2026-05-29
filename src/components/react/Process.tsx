@@ -1,54 +1,18 @@
 import { motion } from 'motion/react';
 import { ClipboardList, Pencil, Truck, Wrench, ShieldCheck } from 'lucide-react';
 import { staggerContainer, fadeUp, sectionViewport, springSnappy } from '../../lib/motion-presets';
+import { useT } from '../../lib/i18n';
 
-type Step = {
-  num: string;
-  icon: typeof ClipboardList;
-  title: string;
-  body: string;
-  meta: string;
-};
-
-const STEPS: Step[] = [
-  {
-    num: '01',
-    icon: ClipboardList,
-    title: 'Brief & Site Survey',
-    body: 'We start with a working session - scope, programme, budget - then a physical site survey to capture conditions, constraints and existing services. The outcome is a written brief everyone signs off.',
-    meta: 'Week 1',
-  },
-  {
-    num: '02',
-    icon: Pencil,
-    title: 'Design & Coordination',
-    body: 'Integrated drawings - architectural, structural, MEPF - produced in-house and coordinated to eliminate clashes before procurement. Energy modeling, code compliance, and approvals included.',
-    meta: 'Weeks 2 - 6',
-  },
-  {
-    num: '03',
-    icon: Truck,
-    title: 'Procurement & Logistics',
-    body: 'Direct relationships with VRF, electrical, plumbing and fire-system manufacturers. We size, specify, ship and store materials so the install crew never waits on parts.',
-    meta: 'Parallel',
-  },
-  {
-    num: '04',
-    icon: Wrench,
-    title: 'Installation',
-    body: 'In-house trades for civil works, MEPF first-fix and second-fix. Daily quality checks, weekly client walks, snag list tracked from day one - not handed over as a surprise at the end.',
-    meta: 'On-programme',
-  },
-  {
-    num: '05',
-    icon: ShieldCheck,
-    title: 'Commissioning & Handover',
-    body: 'Witnessed testing of every system, balanced air & water flow, full O&M manuals, as-built drawings, and operator training. We commission to NFPA, ASHRAE, IET and BS standards.',
-    meta: 'Sign-off',
-  },
+const STEPS = [
+  { num: '01', icon: ClipboardList, titleKey: 'process.1.title', bodyKey: 'process.1.body', metaKey: 'process.1.meta' },
+  { num: '02', icon: Pencil,        titleKey: 'process.2.title', bodyKey: 'process.2.body', metaKey: 'process.2.meta' },
+  { num: '03', icon: Truck,         titleKey: 'process.3.title', bodyKey: 'process.3.body', metaKey: 'process.3.meta' },
+  { num: '04', icon: Wrench,        titleKey: 'process.4.title', bodyKey: 'process.4.body', metaKey: 'process.4.meta' },
+  { num: '05', icon: ShieldCheck,   titleKey: 'process.5.title', bodyKey: 'process.5.body', metaKey: 'process.5.meta' },
 ];
 
 export function Process() {
+  const { t } = useT();
   return (
     <section id="process" className="py-24 lg:py-28 bg-paper relative overflow-hidden">
       <div
@@ -67,19 +31,18 @@ export function Process() {
           <motion.div variants={fadeUp}>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-secondary-2 mb-4">
               <span className="inline-block w-7 h-px bg-current mr-3 align-middle opacity-50" />
-              How we work
+              {t('process.eyebrow')}
             </div>
             <h2 className="font-heading font-black text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-[-0.025em] text-primary">
-              Five steps from<br />
-              <span className="text-gold">brief to handover.</span>
+              {t('process.title.1')}<br />
+              <span className="text-gold">{t('process.title.2')}</span>
             </h2>
           </motion.div>
           <motion.p variants={fadeUp} className="text-secondary text-[16px] leading-[1.65] max-w-[58ch]">
-            A disciplined sequence that keeps programme and quality under control - with the same team accountable from the first sketch through to commissioning.
+            {t('process.lede')}
           </motion.p>
         </motion.div>
 
-        {/* Timeline - desktop horizontal, mobile vertical */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -87,7 +50,6 @@ export function Process() {
           variants={staggerContainer}
           className="relative"
         >
-          {/* Connecting line */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -105,7 +67,6 @@ export function Process() {
                 transition={springSnappy}
                 className="relative text-center lg:text-left group"
               >
-                {/* Step circle */}
                 <div className="relative mx-auto lg:mx-0 mb-5 lg:mb-7 w-[84px] h-[84px]">
                   <motion.div
                     className="absolute inset-0 rounded-full bg-gold-gradient"
@@ -115,20 +76,19 @@ export function Process() {
                   <div className="absolute inset-[3px] rounded-full bg-paper grid place-items-center">
                     <s.icon className="w-7 h-7 text-gold-deep" strokeWidth={1.8} />
                   </div>
-                  {/* Number badge */}
                   <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-primary text-gold-2 font-mono text-[11px] grid place-items-center font-bold shadow-medium">
                     {s.num}
                   </span>
                 </div>
 
                 <div className="font-mono text-[10.5px] tracking-[0.18em] uppercase text-gold-deep font-semibold mb-2">
-                  {s.meta}
+                  {t(s.metaKey)}
                 </div>
                 <h3 className="font-heading font-bold text-[18px] lg:text-[17px] xl:text-[18.5px] text-primary mb-3 leading-tight">
-                  {s.title}
+                  {t(s.titleKey)}
                 </h3>
                 <p className="text-[14px] leading-[1.6] text-secondary">
-                  {s.body}
+                  {t(s.bodyKey)}
                 </p>
               </motion.div>
             ))}
